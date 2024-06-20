@@ -80,11 +80,20 @@ https://templatemo.com/tm-591-villa-agency
                       <li><a href="#home" class="active">Home</a></li>
                       <li><a href="#tentang">Tentang Kami</a></li>
                       <li><a href="#tiket">Beli Tiket</a></li>
+<<<<<<< HEAD
                       <li><a href="login">Keranjang</a></li>
                       <li><a href="#info">Contact Us</a></li>
                       @if (auth())
                       <li><a href="/login">Login</a></li>
+=======
+                      <li><a href="keranjang">Keranjang</a></li>
+                      <li><a href="/contact">Contact Us</a></li>
+                      @if (auth()->user())
+                      <li><a href="/logout">Logout</a></li>
+>>>>>>> 70329aa83a8aae8e5fa4f917129bd92e56941630
 
+                      @else
+                      <li><a href="/login">Login</a></li>
                       @endif
                       <li><a href="jadwal"><i class="fa fa-calendar"></i> Lihat Jadwal</a></li>
                   </ul>   
