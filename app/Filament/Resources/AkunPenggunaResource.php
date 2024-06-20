@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AkunPenggunaResource\Pages;
 use App\Filament\Resources\AkunPenggunaResource\RelationManagers;
 use App\Models\AkunPengguna;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,11 +14,13 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
+use Filament\Tables\Filters\QueryBuilder\Constraints\Operators\Operator;
+
 
 class AkunPenggunaResource extends Resource
 {
-    protected static ?string $model = AkunPengguna::class;
-
+    protected static ?string $model = User::class;
+    
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -53,6 +56,10 @@ class AkunPenggunaResource extends Resource
         if(auth()->user()->role == 'admin')
         {
             return $table
+            ->modifyQueryUsing(function (Builder $query){
+                $query->where('role', 'user');
+
+            })
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
@@ -72,6 +79,7 @@ class AkunPenggunaResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+        
             ->filters([
                 //
             ])

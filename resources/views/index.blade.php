@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Wonderful Mega - Wisata Alama Curug Naga Megamendung, Puncak Bogor</title>
+  <title>Wonderful Mega - Wisata Alama Curug Naga Megamendung, Puncak Bogor</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-<!--
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <!--
 
 TemplateMo 591 villa agency
 
 https://templatemo.com/tm-591-villa-agency
 
 -->
-  </head>
+</head>
 
 <body>
 
@@ -130,7 +130,8 @@ https://templatemo.com/tm-591-villa-agency
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <form class="form-data">
+        <form class="form-data" method="post" action="/transaksi/store">
+          @csrf
           <p style="text-align: center;">Booking Now</p><br>
           <label class="label-form">Nama Lengkap</label>
           <input class="input-book" type="text" name="Nama Lengkap" placeholder="Nama Lengkap">
@@ -142,48 +143,59 @@ https://templatemo.com/tm-591-villa-agency
           <input class="input-book" type="text" name="Jumlah Peserta" placeholder="Jumlah Peserta">
           <label class="label-form">Tanggal Booking</label>
           <!-- <input type="text" name="Nama Lengkap" placeholder="Nama Lengkap"> -->
-          <input  class="input-book" type="date" id="Tanggal" name="Tanggal">
+          <input class="input-book" type="date" id="Tanggal" name="Tanggal">
+
+        
+        <div class="custom-select" style="width:100%;">
+          <select>
+            <option value="0">- Pilih Paket -</option>
+            <option value="1">
+              <h1>Paket 3 Trip Rp135.000/pax | Tiket Masuk
+                Peralatan (Pelampung, Helm)
+                Pemandu (Guide)
+                Curug Priuk, Curug Naga, Curug Barong
+                Asuransi Kegiatan</em>
+            </option>
+            <option value="2">Paket 2 Trip Rp110.000/pax | Tiket Masuk
+              Peralatan (Pelampung, Helm),
+              Pemandu (Guide),
+              Trekking 2 curug (Sesuai Pilihan),
+              Asuransi Kegiatan</option>
+            <option value="3">Paket 1 Trip Rp85.000/pax | Tiket Masuk
+              Peralatan (Pelampung, Helm),
+              Pemandu (Guide),
+              Trekking 1 curug (Sesuai Pilihan),
+              Asuransi Kegiatan</option>
+            <option value="4">Paket Camping (2 Hari 1 Malam) Rp385.000/pax | Minimal 8 PAX
+              Tiket Masuk Area,
+              Makan 3x,
+              Area Camp,
+              Perlengkapan Camp (Tenda, Matras, Sleeping Bag),
+              Boddyrafting dan Peralatan (Pelampung, Helm), Asuransi Kegiatan</option>
+
+          </select>
+        </div>
+        <label class="label-form">Informasi Tambahan</label>
+        <textarea class="koment" rows="4" cols="50" name="comment" form="usrform" placeholder="Permintaan Khusus ( Misalnya, makanan khusus, akomodasi, dll)"></textarea>
+        <button type="submit" style="
+        background-color: black; 
+        color: white; 
+        border: none; 
+        padding: 10px 20px; 
+        font-size: 16px; 
+        border-radius: 25px; 
+        cursor: pointer; 
+        transition: background-color 0.3s ease;
+    " onmouseover="this.style.backgroundColor='#333'" onmouseout="this.style.backgroundColor='black'">
+          Beli
+        </button>
 
         </form>
-        <div class="custom-select" style="width:100%;">
-            <select>
-              <option value="0">- Pilih Paket -</option>
-              <option value="1"><h1>Paket 3 Trip Rp135.000/pax | Tiket Masuk
-               Peralatan (Pelampung, Helm)
-               Pemandu (Guide)
-               Curug Priuk, Curug Naga, Curug Barong
-               Asuransi Kegiatan</em></option>
-                            <option value="2">Paket 2 Trip Rp110.000/pax | Tiket Masuk
-               Peralatan (Pelampung, Helm),
-               Pemandu (Guide),
-               Trekking 2 curug (Sesuai Pilihan),
-               Asuransi Kegiatan</option>
-                            <option value="3">Paket 1 Trip Rp85.000/pax | Tiket Masuk
-               Peralatan (Pelampung, Helm),
-               Pemandu (Guide),
-               Trekking 1 curug (Sesuai Pilihan),
-               Asuransi Kegiatan</option>
-                            <option value="4">Paket Camping (2 Hari 1 Malam) Rp385.000/pax |  Minimal 8 PAX
-               Tiket Masuk Area,
-               Makan 3x,
-               Area Camp,
-               Perlengkapan Camp (Tenda, Matras, Sleeping Bag),
-               Boddyrafting dan Peralatan (Pelampung, Helm),  Asuransi Kegiatan</option>
-              
-            </select>
-        </div>
-        <form>
-          <label class="label-form">Informasi Tambahan</label>
-          <textarea class="koment" rows="4" cols="50" name="comment" form="usrform" placeholder="Permintaan Khusus ( Misalnya, makanan khusus, akomodasi, dll)"></textarea>
-        </form>
-        <div class="main-button">
-              <a href="property-details.html">Beli TIket</a>
-            </div>
       </div>
     </div>
   </div>
 
-<div class="featured section" id="tentang">
+  <div class="featured section" id="tentang">
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
@@ -195,7 +207,7 @@ https://templatemo.com/tm-591-villa-agency
         <div class="col-lg-5">
           <div class="section-heading">
             <h6>Sekilas Tentang</h6>
-            <h2>Wisata  Curug Naga</h2>
+            <h2>Wisata Curug Naga</h2>
           </div>
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -206,7 +218,7 @@ https://templatemo.com/tm-591-villa-agency
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                Selamat datang di situs resmi Wisata Curug Naga. Wisata Curug Naga merupakan tempat wisata alam yang berada di daerah Megamendung, Puncak - Bogor yang dikelola oleh Perhutani KBM dan warga setempat. Di Wisata Curug Naga terdapat 3 curug, yaitu Curug Priuk, Curug Naga, dan Curug Barong. Setiap Curug memiliki ciri khas, karakter, dan tingkat kesulitan masing-masing untuk dijelajahi, sangat cocok bagi anda yang sangat menyukai tantangan.</div>
+                  Selamat datang di situs resmi Wisata Curug Naga. Wisata Curug Naga merupakan tempat wisata alam yang berada di daerah Megamendung, Puncak - Bogor yang dikelola oleh Perhutani KBM dan warga setempat. Di Wisata Curug Naga terdapat 3 curug, yaitu Curug Priuk, Curug Naga, dan Curug Barong. Setiap Curug memiliki ciri khas, karakter, dan tingkat kesulitan masing-masing untuk dijelajahi, sangat cocok bagi anda yang sangat menyukai tantangan.</div>
               </div>
             </div>
             <div class="accordion-item">
@@ -224,12 +236,12 @@ https://templatemo.com/tm-591-villa-agency
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingThree">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                 Bagaimana Cara Reservasi atau Membeli Tiket?
+                  Bagaimana Cara Reservasi atau Membeli Tiket?
                 </button>
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                 Bagi pengunjung yang ingin mengunjungi Wisata Curug Naga, wajib melakukan reservasi/booking terlebih dahulu atau melakukan pembelian tiket di wonderfulmega.com, karena untuk persiapan peralatan dan logistik di lapangan.
+                  Bagi pengunjung yang ingin mengunjungi Wisata Curug Naga, wajib melakukan reservasi/booking terlebih dahulu atau melakukan pembelian tiket di wonderfulmega.com, karena untuk persiapan peralatan dan logistik di lapangan.
                 </div>
               </div>
             </div>
@@ -256,7 +268,7 @@ https://templatemo.com/tm-591-villa-agency
       </div>
     </div>
   </div>
-  
+
 
   <!-- <div class="properties section" id="tiket">
     <div class="container">
@@ -368,7 +380,7 @@ https://templatemo.com/tm-591-villa-agency
     </div>
   </div>
 
-  <div class="fun-facts" >
+  <div class="fun-facts">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -377,7 +389,7 @@ https://templatemo.com/tm-591-villa-agency
               <div class="col-lg-4">
                 <div class="counter">
                   <h2 class="timer count-title count-number" data-to="1" data-speed="1000"></h2>
-                   <p class="count-text ">Body Rafting</p>
+                  <p class="count-text ">Body Rafting</p>
                 </div>
               </div>
               <div class="col-lg-4">
@@ -423,20 +435,21 @@ https://templatemo.com/tm-591-villa-agency
                     <button class="nav-link" id="penthouse-tab" data-bs-toggle="tab" data-bs-target="#penthouse" type="button" role="tab" aria-controls="penthouse" aria-selected="false">Penthouse</button>
                   </li>
                 </ul>
-              </div>              
+              </div>
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="appartment" role="tabpanel" aria-labelledby="appartment-tab">
                   <div class="row">
                     <div class="col-lg-3">
-                      
+
                     </div>
                     <div class="col-lg-6">
                       <img src="assets/images/deal-01.jpg" alt="">
                     </div>
                     <div class="col-lg-3">
                       <h4>Extra Info About Property</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. 
-                      <br><br>When you need free CSS templates, you can simply type TemplateMo in any search engine website. In addition, you can type TemplateMo Portfolio, TemplateMo One Page Layouts, etc.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse.
+                        <br><br>When you need free CSS templates, you can simply type TemplateMo in any search engine website. In addition, you can type TemplateMo Portfolio, TemplateMo One Page Layouts, etc.
+                      </p>
                       <div class="icon-button">
                         <a href="property-details.html"><i class="fa fa-calendar"></i> Beli TIket</a>
                       </div>
@@ -446,7 +459,7 @@ https://templatemo.com/tm-591-villa-agency
                 <div class="tab-pane fade" id="villa" role="tabpanel" aria-labelledby="villa-tab">
                   <div class="row">
                     <div class="col-lg-3">
-                      
+
                     </div>
                     <div class="col-lg-6">
                       <img src="assets/images/deal-02.jpg" alt="">
@@ -463,7 +476,7 @@ https://templatemo.com/tm-591-villa-agency
                 <div class="tab-pane fade" id="penthouse" role="tabpanel" aria-labelledby="penthouse-tab">
                   <div class="row">
                     <div class="col-lg-3">
-                      
+
                     </div>
                     <div class="col-lg-6">
                       <img src="assets/images/deal-03.jpg" alt="">
@@ -485,9 +498,9 @@ https://templatemo.com/tm-591-villa-agency
     </div>
   </div>
 
-  
 
-  
+
+
 
   <footer>
     <div class="container">
@@ -506,85 +519,87 @@ https://templatemo.com/tm-591-villa-agency
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
   <script>
-var x, i, j, l, ll, selElmnt, a, b, c;
-/*look for any elements with the class "custom-select":*/
-x = document.getElementsByClassName("custom-select");
-l = x.length;
-for (i = 0; i < l; i++) {
-  selElmnt = x[i].getElementsByTagName("select")[0];
-  ll = selElmnt.length;
-  /*for each element, create a new DIV that will act as the selected item:*/
-  a = document.createElement("DIV");
-  a.setAttribute("class", "select-selected");
-  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-  x[i].appendChild(a);
-  /*for each element, create a new DIV that will contain the option list:*/
-  b = document.createElement("DIV");
-  b.setAttribute("class", "select-items select-hide");
-  for (j = 1; j < ll; j++) {
-    /*for each option in the original select element,
-    create a new DIV that will act as an option item:*/
-    c = document.createElement("DIV");
-    c.innerHTML = selElmnt.options[j].innerHTML;
-    c.addEventListener("click", function(e) {
-        /*when an item is clicked, update the original select box,
-        and the selected item:*/
-        var y, i, k, s, h, sl, yl;
-        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-        sl = s.length;
-        h = this.parentNode.previousSibling;
-        for (i = 0; i < sl; i++) {
-          if (s.options[i].innerHTML == this.innerHTML) {
-            s.selectedIndex = i;
-            h.innerHTML = this.innerHTML;
-            y = this.parentNode.getElementsByClassName("same-as-selected");
-            yl = y.length;
-            for (k = 0; k < yl; k++) {
-              y[k].removeAttribute("class");
+    var x, i, j, l, ll, selElmnt, a, b, c;
+    /*look for any elements with the class "custom-select":*/
+    x = document.getElementsByClassName("custom-select");
+    l = x.length;
+    for (i = 0; i < l; i++) {
+      selElmnt = x[i].getElementsByTagName("select")[0];
+      ll = selElmnt.length;
+      /*for each element, create a new DIV that will act as the selected item:*/
+      a = document.createElement("DIV");
+      a.setAttribute("class", "select-selected");
+      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+      x[i].appendChild(a);
+      /*for each element, create a new DIV that will contain the option list:*/
+      b = document.createElement("DIV");
+      b.setAttribute("class", "select-items select-hide");
+      for (j = 1; j < ll; j++) {
+        /*for each option in the original select element,
+        create a new DIV that will act as an option item:*/
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.addEventListener("click", function(e) {
+          /*when an item is clicked, update the original select box,
+          and the selected item:*/
+          var y, i, k, s, h, sl, yl;
+          s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+          sl = s.length;
+          h = this.parentNode.previousSibling;
+          for (i = 0; i < sl; i++) {
+            if (s.options[i].innerHTML == this.innerHTML) {
+              s.selectedIndex = i;
+              h.innerHTML = this.innerHTML;
+              y = this.parentNode.getElementsByClassName("same-as-selected");
+              yl = y.length;
+              for (k = 0; k < yl; k++) {
+                y[k].removeAttribute("class");
+              }
+              this.setAttribute("class", "same-as-selected");
+              break;
             }
-            this.setAttribute("class", "same-as-selected");
-            break;
           }
-        }
-        h.click();
-    });
-    b.appendChild(c);
-  }
-  x[i].appendChild(b);
-  a.addEventListener("click", function(e) {
-      /*when the select box is clicked, close any other select boxes,
-      and open/close the current select box:*/
-      e.stopPropagation();
-      closeAllSelect(this);
-      this.nextSibling.classList.toggle("select-hide");
-      this.classList.toggle("select-arrow-active");
-    });
-}
-function closeAllSelect(elmnt) {
-  /*a function that will close all select boxes in the document,
-  except the current select box:*/
-  var x, y, i, xl, yl, arrNo = [];
-  x = document.getElementsByClassName("select-items");
-  y = document.getElementsByClassName("select-selected");
-  xl = x.length;
-  yl = y.length;
-  for (i = 0; i < yl; i++) {
-    if (elmnt == y[i]) {
-      arrNo.push(i)
-    } else {
-      y[i].classList.remove("select-arrow-active");
+          h.click();
+        });
+        b.appendChild(c);
+      }
+      x[i].appendChild(b);
+      a.addEventListener("click", function(e) {
+        /*when the select box is clicked, close any other select boxes,
+        and open/close the current select box:*/
+        e.stopPropagation();
+        closeAllSelect(this);
+        this.nextSibling.classList.toggle("select-hide");
+        this.classList.toggle("select-arrow-active");
+      });
     }
-  }
-  for (i = 0; i < xl; i++) {
-    if (arrNo.indexOf(i)) {
-      x[i].classList.add("select-hide");
-    }
-  }
-}
-/*if the user clicks anywhere outside the select box,
-then close all select boxes:*/
-document.addEventListener("click", closeAllSelect);
-</script>
 
-  </body>
+    function closeAllSelect(elmnt) {
+      /*a function that will close all select boxes in the document,
+      except the current select box:*/
+      var x, y, i, xl, yl, arrNo = [];
+      x = document.getElementsByClassName("select-items");
+      y = document.getElementsByClassName("select-selected");
+      xl = x.length;
+      yl = y.length;
+      for (i = 0; i < yl; i++) {
+        if (elmnt == y[i]) {
+          arrNo.push(i)
+        } else {
+          y[i].classList.remove("select-arrow-active");
+        }
+      }
+      for (i = 0; i < xl; i++) {
+        if (arrNo.indexOf(i)) {
+          x[i].classList.add("select-hide");
+        }
+      }
+    }
+    /*if the user clicks anywhere outside the select box,
+    then close all select boxes:*/
+    document.addEventListener("click", closeAllSelect);
+  </script>
+
+</body>
+
 </html>
