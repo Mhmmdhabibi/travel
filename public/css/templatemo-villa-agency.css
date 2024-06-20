@@ -109,39 +109,6 @@ img {
   overflow: hidden;
 }
 
-
-.select-container {
-  position: relative;
-  display: inline-block;
-}
-
-.beautiful-select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 4px;
-  color: #333;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.beautiful-select:hover {
-  border-color: #aaa;
-}
-
-.beautiful-select:focus {
-  border-color: #007BFF;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.beautiful-select option {
-  padding: 10px;
-}
 /* 
 ---------------------------------------------
 Global Styles
@@ -160,10 +127,6 @@ body {
 ::-moz-selection {
   background: #0071f8;
   color: #fff;
-}
-
-select{
-  width: 100px;
 }
 
 .section {
@@ -476,8 +439,8 @@ Header Style
 }
 
 .header-area .main-nav .nav li {
-  padding-left: 1px;
-  padding-right: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 100px;
   line-height: 100px;
 }

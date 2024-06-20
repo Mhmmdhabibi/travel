@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Expr\FuncCall;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,14 @@ Route::post('/register', function(Request $request)
 
 Route::get('/login', function (){
     return view('login');
+});
+
+
+Route::post('/transaksi/store', function(Request $request){
+    if(!auth()->user())
+    {
+        return redirect('/login');
+    }
 });
 
 Route::post('/login', function(Request $request){
