@@ -62,3 +62,12 @@ Route::get('/login', function (){
 
 });
 
+
+Route::get('/keranjang', function (){
+    return view('keranjang');
+
+
+
+
+});
+
