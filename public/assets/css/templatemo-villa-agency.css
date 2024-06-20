@@ -740,8 +740,101 @@ Banner Style
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 220px 20% 320px 20%;
-  margin-top: 0px;
+padding: 71px 10px;
+  margin-top: 40px;
+}
+
+.main-banner .item h5{
+  color: white;
+}
+.input-book{
+  width: 100%;
+  margin-top: 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: solid 0px;
+  background-color: #efefef;
+  font-size: 13px;
+}
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+      color: #ffffff;
+    padding: 5px 16px;
+    background-color: #f35525;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    user-select: none;
+    margin-top: 5px;
+    font-size: 13px;
+}
+.form-data{
+  background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0px 0px 9px -2px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+.label-form{
+  font-size: 11px;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: white;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+.koment{
+      width: 100%;
+    margin-top: 4px;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 10px;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .main-banner .item-1 {
@@ -1061,7 +1154,7 @@ Best Deal Style
 
 .best-deal {
   background-color: #fafafa;
-  padding: 100px 0px;
+/*  padding: 100px 0px;*/
 }
 
 .best-deal .tab-content img {
@@ -1122,6 +1215,11 @@ Best Deal Style
     border-radius: 5px;
     padding: 79px;
     margin-top: 13px;
+}
+.date-input{
+  border-radius: 5px;
+    padding: 1px 5px;
+    border: solid 2px #c2c4c5;
 }
 
 .best-deal .info-table ul li:last-child {

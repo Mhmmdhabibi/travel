@@ -77,16 +77,16 @@ https://templatemo.com/tm-591-villa-agency
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                      <li><a href="welcome" class="active">Home</a></li>
+                      <li><a href="#home" class="active">Home</a></li>
                       <li><a href="#tentang">Tentang Kami</a></li>
                       <li><a href="#tiket">Beli Tiket</a></li>
-                      <li><a href="keranjang">Keranjang</a></li>
-                      <li><a href="/contact">Contact Us</a></li>
+                      <li><a href="login">Keranjang</a></li>
+                      <li><a href="#info">Contact Us</a></li>
                       @if (auth())
                       <li><a href="/login">Login</a></li>
 
                       @endif
-                      <li><a href="#"><i class="fa fa-calendar"></i> Lihat Jadwal</a></li>
+                      <li><a href="jadwal"><i class="fa fa-calendar"></i> Lihat Jadwal</a></li>
                   </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -99,7 +99,10 @@ https://templatemo.com/tm-591-villa-agency
   </header>
   <!-- ***** Header Area End ***** -->
 
-  <div class="main-banner">
+
+
+  <div class="main-banner" id="home">
+    
     <div class="owl-carousel owl-banner">
       <div class="item item-1">
         <div class="header-text">
@@ -119,6 +122,62 @@ https://templatemo.com/tm-591-villa-agency
           <h2>WISATA <br>Curug Naga Puncak</h2>
         </div>
       </div> -->
+    </div>
+  </div>
+
+   <div class="container" id="tiket">
+    <div class="row">
+      <div class="col-md-12">
+        <form class="form-data">
+          <p style="text-align: center;">Booking Now</p><br>
+          <label class="label-form">Nama Lengkap</label>
+          <input class="input-book" type="text" name="Nama Lengkap" placeholder="Nama Lengkap">
+          <label class="label-form">No Hp</label>
+          <input class="input-book" type="text" name="Nomor HP" placeholder="No HP (Whatsapp)">
+          <label class="label-form">Alamat</label>
+          <input class="input-book" type="text" name="Alamat" placeholder="Alamat">
+          <label class="label-form">Jumlah Peserta</label>
+          <input class="input-book" type="text" name="Jumlah Peserta" placeholder="Jumlah Peserta">
+          <label class="label-form">Tanggal Booking</label>
+          <!-- <input type="text" name="Nama Lengkap" placeholder="Nama Lengkap"> -->
+          <input  class="input-book" type="date" id="Tanggal" name="Tanggal">
+
+        </form>
+        <div class="custom-select" style="width:100%;">
+            <select>
+              <option value="0">- Pilih Paket -</option>
+              <option value="1"><h1>Paket 3 Trip Rp135.000/pax | Tiket Masuk
+               Peralatan (Pelampung, Helm)
+               Pemandu (Guide)
+               Curug Priuk, Curug Naga, Curug Barong
+               Asuransi Kegiatan</em></option>
+                            <option value="2">Paket 2 Trip Rp110.000/pax | Tiket Masuk
+               Peralatan (Pelampung, Helm),
+               Pemandu (Guide),
+               Trekking 2 curug (Sesuai Pilihan),
+               Asuransi Kegiatan</option>
+                            <option value="3">Paket 1 Trip Rp85.000/pax | Tiket Masuk
+               Peralatan (Pelampung, Helm),
+               Pemandu (Guide),
+               Trekking 1 curug (Sesuai Pilihan),
+               Asuransi Kegiatan</option>
+                            <option value="4">Paket Camping (2 Hari 1 Malam) Rp385.000/pax |  Minimal 8 PAX
+               Tiket Masuk Area,
+               Makan 3x,
+               Area Camp,
+               Perlengkapan Camp (Tenda, Matras, Sleeping Bag),
+               Boddyrafting dan Peralatan (Pelampung, Helm),  Asuransi Kegiatan</option>
+              
+            </select>
+        </div>
+        <form>
+          <label class="label-form">Informasi Tambahan</label>
+          <textarea class="koment" rows="4" cols="50" name="comment" form="usrform" placeholder="Permintaan Khusus ( Misalnya, makanan khusus, akomodasi, dll)"></textarea>
+        </form>
+        <div class="main-button">
+              <a href="property-details.html">Beli TIket</a>
+            </div>
+      </div>
     </div>
   </div>
 
@@ -198,96 +257,7 @@ https://templatemo.com/tm-591-villa-agency
     </div>
   </div>
 
-  <div class="properties section" id="tiket">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 offset-lg-4">
-          <div class="section-heading text-center">
-            <h6>| Beli Tiket</h6>
-            <h2>Mungkin Kamu Perlu membeli Paket </h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-4 col-md-6">
-          <div class="item">
-            <a href="property-details.html"><img src="assets/images/property-01.jpg" alt=""></a>
-            <span class="category">Wisata Curug Naga</span>
-            <h6>Rp 135.000/pax</h6>
-            <h4><a href="property-details.html">Paket 3 Trip</a></h4>
-            <ul>
-              <li><i class="fa-solid fa-caret-right"></i> Tiket Masuk</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Peralatan (Pelampung, Helm) </li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Pemandu (Guide)</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Curug Priuk, Curug Naga, Curug Barong</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Asuransi Kegiatan</li>
-            </ul>
-            <div class="main-button">
-              <a href="login">Beli TIket</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="item">
-            <a href="property-details.html"><img src="assets/images/property-01.jpg" alt=""></a>
-            <span class="category">Wisata Curug Naga</span>
-            <h6>Rp 110.000/pax</h6>
-            <h4><a href="property-details.html">Paket 2 Trip</a></h4>
-            <ul>
-              <li><i class="fa-solid fa-caret-right"></i> Tiket Masuk</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Peralatan (Pelampung, Helm) </li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Pemandu (Guide)</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Trekking 2 curug (Sesuai Pilihan)</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Asuransi Kegiatan</li>
-            </ul>
-            <div class="main-button">
-              <a href="property-details.html">Beli TIket</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="item">
-            <a href="property-details.html"><img src="assets/images/property-01.jpg" alt=""></a>
-            <span class="category">Wisata Curug Naga</span>
-            <h6>Rp 85.000/pax</h6>
-            <h4><a href="property-details.html">Paket 1 Trip</a></h4>
-            <ul>
-              <li><i class="fa-solid fa-caret-right"></i> Tiket Masuk</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Peralatan (Pelampung, Helm) </li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Pemandu (Guide)</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Trekking 1 curug (Sesuai Pilihan)</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Asuransi Kegiatan</li>
-            </ul>
-            <div class="main-button">
-              <a href="property-details.html">Beli TIket</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="item">
-            <a href="property-details.html"><img src="assets/images/property-01.jpg" alt=""></a>
-            <span class="category">Wisata Curug Naga</span>
-            <h6>Rp 385.000/pax</h6>
-            <h4><a href="property-details.html">Paket Camping (2 Hari 1 Malam)</a></h4>
-            <span class="category"><i class="fa-solid fa-quote-right"></i> Minimal 8 PAX</span>
-            <ul>
-             
-              <li><i class="fa-solid fa-caret-right"></i> Tiket Masuk Area</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Makan 3x</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Area Camp</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Perlengkapan Camp (Tenda, Matras, Sleeping Bag)</li><br>
-              <li><i class="fa-solid fa-caret-right"></i> Boddyrafting dan Peralatan (Pelampung, Helm)</li>
-              <li><i class="fa-solid fa-caret-right"></i> Asuransi Kegiatan</li>
-            </ul>
-            <div class="main-button">
-              <a href="property-details.html">Beli TIket</a>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </div>
+  
 
   <div class="video section">
     <div class="container">
@@ -355,22 +325,7 @@ https://templatemo.com/tm-591-villa-agency
             <h2>Gallery Kami</h2>
           </div>
         </div>
-        <div class="col-lg-12">
-          <div class="tabs-content">
-            <div class="row">
-              <div class="nav-wrapper ">
-                <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="appartment-tab" data-bs-toggle="tab" data-bs-target="#appartment" type="button" role="tab" aria-controls="appartment" aria-selected="true">Appartment</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="villa-tab" data-bs-toggle="tab" data-bs-target="#villa" type="button" role="tab" aria-controls="villa" aria-selected="false">Villa House</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="penthouse-tab" data-bs-toggle="tab" data-bs-target="#penthouse" type="button" role="tab" aria-controls="penthouse" aria-selected="false">Penthouse</button>
-                  </li>
-                </ul>
-              </div>              
+        
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="appartment" role="tabpanel" aria-labelledby="appartment-tab">
                   <div class="row">
@@ -418,7 +373,7 @@ https://templatemo.com/tm-591-villa-agency
                       <h4>Detail Info About Villa</h4>
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
                       <div class="icon-button">
-                        <a href="property-details.html"><i class="fa fa-calendar"></i> Beli TIket</a>
+                        <a href="login"><i class="fa fa-calendar"></i> Beli TIket</a>
                       </div>
                     </div>
                   </div>
@@ -443,7 +398,7 @@ https://templatemo.com/tm-591-villa-agency
                       <h4>Extra Info About Penthouse</h4>
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
                       <div class="icon-button">
-                        <a href="property-details.html"><i class="fa fa-calendar"></i> Beli TIket</a>
+                        <a href="login"><i class="fa fa-calendar"></i> Beli TIket</a>
                       </div>
                     </div>
                   </div>

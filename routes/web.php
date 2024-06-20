@@ -62,4 +62,11 @@ Route::get('/keranjang', function (){
 
 
 });
+Route::get('/jadwal', function (){
+    return view('jadwal');
+
+
+
+
+});
 
