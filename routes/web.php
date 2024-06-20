@@ -20,6 +20,14 @@ Route::get('/welcome', function (){
 
 
 });
+Route::get('/', function (){
+    return view('index');
+
+
+
+
+});
+
 
 Route::get('/contact', function (){
     return view('contact');
