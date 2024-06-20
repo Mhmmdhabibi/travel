@@ -23,15 +23,13 @@ class PaketWisataResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Textarea::make('title')
-                    ->required()
-                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('title')
+                    ->required(),
                 Forms\Components\TextInput::make('harga')
                     ->required()
                     ->numeric(),
-                Forms\Components\Textarea::make('detail')
-                    ->required()
-                    ->columnSpanFull(),
+                Forms\Components\RichEditor::make('detail')
+                    ->required(),
                 Forms\Components\TextInput::make('norek')
                     ->required()
                     ->maxLength(20),
@@ -42,7 +40,13 @@ class PaketWisataResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('title')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('harga')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('detail')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('norek')
@@ -61,6 +65,8 @@ class PaketWisataResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -75,6 +81,10 @@ class PaketWisataResource extends Resource
             //
         ];
     }
+    public static function canViewAny(): bool 
+    {
+        return auth()->user()->role == 'admin';
+    } 
 
     public static function getPages(): array
     {

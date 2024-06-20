@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class AkunPenggunaResource extends Resource
 {
@@ -21,7 +22,9 @@ class AkunPenggunaResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
+    
+        if(Auth::user()->role == 'admin'){
+            return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
@@ -40,11 +43,16 @@ class AkunPenggunaResource extends Resource
                     ->required()
                     ->maxLength(255),
             ]);
+        }else{
+            return $form;
+        }
     }
 
     public static function table(Table $table): Table
     {
-        return $table
+        if(auth()->user()->role == 'admin')
+        {
+            return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
@@ -75,6 +83,9 @@ class AkunPenggunaResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+        }else{
+            return $table;
+        }
     }
 
     public static function getRelations(): array
@@ -84,6 +95,11 @@ class AkunPenggunaResource extends Resource
         ];
     }
 
+    public static function canViewAny(): bool 
+    {
+        return auth()->user()->role == 'admin';
+    } 
+
     public static function getPages(): array
     {
         return [
@@ -92,4 +108,5 @@ class AkunPenggunaResource extends Resource
             'edit' => Pages\EditAkunPengguna::route('/{record}/edit'),
         ];
     }
+
 }

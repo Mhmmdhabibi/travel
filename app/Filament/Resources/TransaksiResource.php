@@ -31,9 +31,10 @@ class TransaksiResource extends Resource
                 Forms\Components\TextInput::make('pax')
                     ->required()
                     ->maxLength(10),
-                Forms\Components\TextInput::make('jadwals_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\DatePicker::make('tanggal_masuk')
+                    ->required(),
+                Forms\Components\DatePicker::make('tanggal_keluar')
+                    ->required(),
             ]);
     }
 
@@ -49,8 +50,11 @@ class TransaksiResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('pax')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('jadwals_id')
-                    ->numeric()
+                Tables\Columns\Date::make('tanggal_masuk')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('tanggal_keluar')
+                    ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -73,6 +77,11 @@ class TransaksiResource extends Resource
                 ]),
             ]);
     }
+
+    public static function canViewAny(): bool 
+    {
+        return auth()->user()->role == 'admin';
+    } 
 
     public static function getRelations(): array
     {

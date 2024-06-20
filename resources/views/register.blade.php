@@ -9,13 +9,25 @@
       <div class="col_half">
         <div class="row clearfix create_account">
           <div>
-            <a href="/register">Create an Account</a>
+            <a href="/login">Punya Akun?? login</a>
           </div>
         </div>
       </div>
       <div class="col_half last">
-        <form action="login" method="POST">
+        <form action="/register" method="POST">
           @csrf
+          <div class="input_field">
+            <span>
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+            <input type="text" name="name" placeholder="Name" required>
+          </div>
+          <div class="input_field">
+            <span>
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+            <input type="text" name="no_telp" placeholder="No Telephone" required>
+          </div>
           <div class="input_field">
             <span>
               <i class="fa fa-envelope" aria-hidden="true"></i>

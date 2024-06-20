@@ -11,16 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('paket_wisatas', function (Blueprint $table) {
+        Schema::create('paket', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
-            $table->bigInteger('harga');
-            $table->text('detail');
-            $table->char('norek', 20);
-            $table->timestamps();
-        });
-        Schema::create('paket_campings', function (Blueprint $table) {
-            $table->id();
+            $table->enum('type', ['wisata', 'camping']);
             $table->text('title');
             $table->bigInteger('harga');
             $table->text('detail');
@@ -37,18 +30,14 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-        Schema::create('jadwals', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('akun_penggunas_id')->unsigned();
             $table->date('tanggal_pembayaran');
             $table->char('pax',10);
-            $table->bigInteger('jadwals_id')->unsigned();
+            $table->date('tanggal_masuk');
+            $table->date('tanggal_keluar');
             $table->foreign('akun_penggunas_id')->references('id')->on('akun_penggunas')->cascadeOnDelete();
-            $table->foreign('jadwals_id')->references('id')->on('jadwals')->cascadeOnDelete();
             $table->timestamps();
         });
     }
