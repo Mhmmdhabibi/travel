@@ -66,18 +66,6 @@ Route::get('/register', function()
 
 Route::post('/register', function(Request $request)
 {
-    $validator = Validator::make($request->all(), [
-        'name' => 'required|string|max:255',
-        'no_telp' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:8|confirmed',
-    ]);
-
-    if ($validator->fails()) {
-        return redirect('register')
-                    ->withErrors($validator)
-                    ->withInput();
-    }
 
     // Create the user
     $user = User::create([
