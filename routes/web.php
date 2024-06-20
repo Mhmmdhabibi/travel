@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\PaketWisata;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,9 @@ use PhpParser\Node\Expr\FuncCall;
 */
 
 Route::get('/welcome', function (){
-    return view('index');
+    $data = PaketWisata::all();
+    
+    return view('index', compact('data'));
 
 
 

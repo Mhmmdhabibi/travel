@@ -50,7 +50,7 @@ class TransaksiResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('pax')
                     ->searchable(),
-                Tables\Columns\Date::make('tanggal_masuk')
+                Tables\Columns\TextColumn::make('tanggal_masuk')
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('tanggal_keluar')
