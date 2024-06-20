@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="col_half last">
-        <form>
+        <form action="index.login">
           <div class="input_field">
             <span>
               <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -42,7 +42,6 @@
     </div>
   </div>
   <p class="credit">
-    Developed by 
     <a href="http://www.designtheway.com/responsive-login-form/" target="_blank">Design the way</a>
   </p>
 </div>

@@ -79,10 +79,13 @@ https://templatemo.com/tm-591-villa-agency
                     <ul class="nav">
                       <li><a href="welcome" class="active">Home</a></li>
                       <li><a href="#tentang">Tentang Kami</a></li>
-                      <li><a href="/property-detail">Beli Tiket</a></li>
-                      <li><a href="#">Keranjang</a></li>
+                      <li><a href="#tiket">Beli Tiket</a></li>
+                      <li><a href="keranjang">Keranjang</a></li>
                       <li><a href="/contact">Contact Us</a></li>
+                      @if (auth())
                       <li><a href="/login">Login</a></li>
+
+                      @endif
                       <li><a href="#"><i class="fa fa-calendar"></i> Lihat Jadwal</a></li>
                   </ul>   
                     <a class='menu-trigger'>
@@ -220,7 +223,7 @@ https://templatemo.com/tm-591-villa-agency
               <li><i class="fa-solid fa-caret-right"></i> Asuransi Kegiatan</li>
             </ul>
             <div class="main-button">
-              <a href="property-detail">Beli TIket</a>
+              <a href="login">Beli TIket</a>
             </div>
           </div>
         </div>
