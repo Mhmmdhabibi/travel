@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\PaketWisata;
+use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,14 +24,14 @@ use PhpParser\Node\Expr\FuncCall;
 Route::get('/welcome', function (){
     $data = PaketWisata::all();
     
-    return view('index', compact('data'));
+    return view('index', ['datas' => $data]);
 
 
 
 
 });
 Route::get('/', function (){
-    return view('index');
+    return redirect('/welcome');
 
 
 
@@ -54,7 +55,8 @@ Route::get('/properties', function (){
 
 });
 
-Route::get('/property-detail', function (){
+Route::get('/property-detail', function (Request $request){
+    dd($request);
     return view('property-detail');
 
 
@@ -96,6 +98,7 @@ Route::post('/transaksi/store', function(Request $request){
     {
         return redirect('/login');
     }
+    return redirect("/property-detail")->with($request->all());
 });
 
 Route::post('/login', function(Request $request){

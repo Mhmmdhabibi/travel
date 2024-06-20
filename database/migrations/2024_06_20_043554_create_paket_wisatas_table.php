@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('paket', function (Blueprint $table) {
+        Schema::create('paket_wisatas', function (Blueprint $table) {
             $table->id();
             $table->enum('type', ['wisata', 'camping']);
             $table->text('title');

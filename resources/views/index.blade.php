@@ -148,31 +148,11 @@ https://templatemo.com/tm-591-villa-agency
         
         <div class="custom-select" style="width:100%;">
           <select>
-            <option value="0">- Pilih Paket -</option>
-            <option value="1">
-              <h1>Paket 3 Trip Rp135.000/pax | Tiket Masuk
-                Peralatan (Pelampung, Helm)
-                Pemandu (Guide)
-                Curug Priuk, Curug Naga, Curug Barong
-                Asuransi Kegiatan</em>
-            </option>
-            <option value="2">Paket 2 Trip Rp110.000/pax | Tiket Masuk
-              Peralatan (Pelampung, Helm),
-              Pemandu (Guide),
-              Trekking 2 curug (Sesuai Pilihan),
-              Asuransi Kegiatan</option>
-            <option value="3">Paket 1 Trip Rp85.000/pax | Tiket Masuk
-              Peralatan (Pelampung, Helm),
-              Pemandu (Guide),
-              Trekking 1 curug (Sesuai Pilihan),
-              Asuransi Kegiatan</option>
-            <option value="4">Paket Camping (2 Hari 1 Malam) Rp385.000/pax | Minimal 8 PAX
-              Tiket Masuk Area,
-              Makan 3x,
-              Area Camp,
-              Perlengkapan Camp (Tenda, Matras, Sleeping Bag),
-              Boddyrafting dan Peralatan (Pelampung, Helm), Asuransi Kegiatan</option>
+          <option value="0">PILIH</option>
 
+            @foreach($datas as $item)
+                <option value="{{$item->id}}">{!!$item->detail!!}</option>
+            @endforeach
           </select>
         </div>
         <label class="label-form">Informasi Tambahan</label>
