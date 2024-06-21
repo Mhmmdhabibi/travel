@@ -24,7 +24,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('no_telp')->unique();
+            $table->string('no_telp')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -33,11 +33,17 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('akun_penggunas_id')->unsigned();
+            $table->bigInteger('paket_wisata_id')->unsigned();
+
             $table->date('tanggal_pembayaran');
             $table->char('pax',10);
+            $table->char('no_telp', 13);
+            $table->text('alamat');
             $table->date('tanggal_masuk');
             $table->date('tanggal_keluar');
-            $table->foreign('akun_penggunas_id')->references('id')->on('akun_penggunas')->cascadeOnDelete();
+            $table->foreign('akun_penggunas_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('paket_wisata_id')->references('id')->on('paket_wisatas')->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

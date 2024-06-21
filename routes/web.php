@@ -3,6 +3,7 @@
 use App\Models\PaketWisata;
 use App\Models\Transaksi;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +26,6 @@ Route::get('/welcome', function (){
     $data = PaketWisata::all();
     
     return view('index', ['datas' => $data]);
-
 
 
 
@@ -55,9 +55,13 @@ Route::get('/properties', function (){
 
 });
 
-Route::get('/property-detail', function (Request $request){
-    dd($request);
-    return view('property-detail');
+Route::get('/property-detail/{id}/{idTrans}', function ($id, $idTrans){
+    $data = PaketWisata::find($id);
+    $sum = Transaksi::find($idTrans);
+    $pax = (int)$sum->pax;
+    $price = (int)$data->harga;
+    $total = $pax * $price;
+    return view('property-detail', ['datas' => $data, 'total' => $total, 'idTrans' => $idTrans]);
 
 
 
@@ -93,12 +97,55 @@ Route::get('/login', function (){
 });
 
 
+
 Route::post('/transaksi/store', function(Request $request){
+    $faker = Faker\Factory::create('id_ID');
+
     if(!auth()->user())
     {
         return redirect('/login');
     }
-    return redirect("/property-detail")->with($request->all());
+
+    $tanggal_keluar = $request->tanggal_keluar;
+    if(!$request->tanggal_keluar)
+    {
+        $tanggal_keluar = $request->tanggal_masuk;
+    }
+    $id = mt_rand(1000000, 9999999);
+
+    Transaksi::create([
+        'id' => $id,
+        'akun_penggunas_id' => auth()->user()->id,
+        'paket_wisata_id' => $request->paket_wisata,
+        'pax' => $request->jumlah_peserta,
+        'alamat' => $request->alamat,
+        'no_telp' => $request->nomor_hp,
+        'tanggal_masuk' => $request->tanggal_masuk,
+        'tanggal_keluar' => $tanggal_keluar ,
+
+    ]);
+
+    return redirect("/property-detail/".$request->paket_wisata."/".$id);
+});
+
+Route::post('/transaksi/update', function(Request $request) {
+    if ($request->hasFile('bukti_transfer')) {
+        $file = $request->file('bukti_transfer');
+        $path = $file->store('uploads', 'public');
+
+        $upload = Transaksi::find($request->idTrans);
+        if ($upload) {
+            $upload->tanggal_pembayaran = date('Y-m-d');
+            $upload->bukti_transfer_path = "/storage/".$path; // Save the path if you have a column for it
+            $upload->save();
+        } else {
+            return response()->json(['message' => 'Transaction not found'], 404);
+        }
+    } else {
+        return response()->json(['message' => 'No file uploaded'], 400);
+    }
+
+    return redirect()->back()->with('success', 'Payment proof uploaded successfully.');
 });
 
 Route::post('/login', function(Request $request){
