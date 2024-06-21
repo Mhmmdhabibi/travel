@@ -9,6 +9,7 @@ class CekTiket extends Model
 {
     use HasFactory;
     protected $table = 'transaksis';
+    protected $guarded = [];
 
     public function user()
     {
@@ -18,5 +19,5 @@ class CekTiket extends Model
     public function paketWisata()
     {
         return $this->belongsTo(PaketWisata::class);
-    }
+    }   
 }
