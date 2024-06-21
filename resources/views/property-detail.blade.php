@@ -77,11 +77,8 @@ https://templatemo.com/tm-591-villa-agency
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                      <li><a href="index.html" class="active">Home</a></li>
-                      <li><a href="#tentang">Tentang Kami</a></li>
-                      <li><a href="#tiket">Beli TIket</a></li>
+                      <li><a href="welcome" class="active">Home</a></li>
                       <li><a href="#">Keranjang</a></li>
-                      <li><a href="#info">Contact Us</a></li>
                       <li><a href="#"><i class="fa fa-calendar"></i> Lihat Jadwal</a></li>
                   </ul>   
                     <a class='menu-trigger'>
