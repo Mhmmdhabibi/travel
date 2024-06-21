@@ -28,6 +28,12 @@ class TransaksiResource extends Resource
                     ->numeric(),
                 Forms\Components\DatePicker::make('tanggal_pembayaran')
                     ->required(),
+                    Forms\Components\FileUpload::make('bukti_transfer_path')
+                    ->disk('local')
+                    ->image()
+                    ->imageEditor()
+                    ->required(),
+
                 Forms\Components\TextInput::make('pax')
                     ->required()
                     ->maxLength(10),
@@ -47,6 +53,9 @@ class TransaksiResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('tanggal_pembayaran')
                     ->date()
+                    ->sortable(),
+                Tables\Columns\ImageColumn::make('bukti_transfer_path')
+                    ->disk('local')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('pax')
                     ->searchable(),
@@ -78,10 +87,10 @@ class TransaksiResource extends Resource
             ]);
     }
 
-    public static function canViewAny(): bool 
+    public static function canViewAny(): bool
     {
         return auth()->user()->role == 'admin';
-    } 
+    }
 
     public static function getRelations(): array
     {

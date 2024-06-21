@@ -47,6 +47,7 @@ class PaketWisataResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('detail')
+                    ->html()
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('norek')

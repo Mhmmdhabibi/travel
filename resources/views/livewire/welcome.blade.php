@@ -1,25 +1,7 @@
+<div>
 <html lang="en">
 
-<head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <title>Wonderful Mega - Wisata Alama Curug Naga Megamendung, Puncak Bogor</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-  <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-  <
-</head>
 
 <body>
 
@@ -73,7 +55,7 @@
               <li><a href="#home" class="active">Home</a></li>
               <li><a href="#tentang">Tentang Kami</a></li>
               <li><a href="#tiket">Beli Tiket</a></li>
-              <li><a href="keranjang">Keranjang</a></li>
+              <li><a href="login">Keranjang</a></li>
               <li><a href="#info">Contact Us</a></li>
               <li><a href="keranjang">Keranjang</a></li>
               @if(auth()->user())
@@ -125,19 +107,9 @@
       <div class="col-md-12">
         <form class="form-data" method="post" action="/transaksi/store">
           @csrf
-        <div style=" background: orange">
-           
-        <select style="width: 100%; border: 0; background: #f35525; height: 40px; color: white" id="select1" onchange="getOption()">
-            <option value="0">Pilih Tipe</option>
-            <option value="1">Wisata</option>
-            <option value="2">Camping</option>
-        </select>
-        </div>
-        <p> 
-        <span style="display: none;" class="output"></span>
-    </p>  
+          <p style="text-align: center;">Booking Now</p><br>
           <label class="label-form">Nama Lengkap</label>
-          <input class="input-book" type="text" name="Nama Lengkap" placeholder="Nama Lengkap">
+          <input class="input-book" wire:model.live="test" type="text" name="Nama Lengkap" placeholder="Nama Lengkap">
           <label class="label-form">No Hp</label>
           <input class="input-book" type="text" name="nomor_hp" placeholder="No HP (Whatsapp)">
           <label class="label-form">Alamat</label>
@@ -146,19 +118,16 @@
           <input class="input-book" type="text" name="jumlah_peserta" placeholder="Jumlah Peserta">
           <label class="label-form">Tanggal Booking</label>
           <!-- <input type="text" name="Nama Lengkap" placeholder="Nama Lengkap"> -->
-          <input class="input-book" type="date" id="tanggalmasuk" name="tanggal_masuk">
-          <label class="label-form">Tanggal Booking</label>
-          <!-- <input type="text" name="Nama Lengkap" placeholder="Nama Lengkap"> -->
-          <input class="input-book" type="date" id="tanggalkeluar" name="tanggal_keluar">
+          <input class="input-book" type="date" id="Tanggal" name="Tanggal">
 
           
         <div class="custom-select" style="width:100%;">
-          <select name="paket_wisata">
+          <select>
           <option value="0">PILIH</option>
 
-            @foreach($datas as $item)
-                <option value="{{$item->id  }}">{{$item->title}}.{!!$item->detail!!}</option>
-            @endforeach
+            <!-- @foreach($datas as $item)
+                <option value="{{$item->id  }}">{!!$item->detail!!}</option>
+            @endforeach -->
           </select>
         </div>
         <label class="label-form">Informasi Tambahan</label>
@@ -255,6 +224,90 @@
     </div>
   </div>
 
+
+  <!-- <div class="properties section" id="tiket">
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/property-01.jpg" alt=""></a>
+            <span class="category">Wisata Curug Naga</span>
+            <h6>Rp 135.000/pax</h6>
+            <h4><a href="property-details.html">Paket 3 Trip</a></h4>
+            <ul>
+              <li><i class="fa-solid fa-caret-right"></i> Tiket Masuk</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Peralatan (Pelampung, Helm) </li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Pemandu (Guide)</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Curug Priuk, Curug Naga, Curug Barong</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Asuransi Kegiatan</li>
+            </ul>
+            <div class="main-button">
+              <a href="property-details.html">Beli TIket</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/property-01.jpg" alt=""></a>
+            <span class="category">Wisata Curug Naga</span>
+            <h6>Rp 110.000/pax</h6>
+            <h4><a href="property-details.html">Paket 2 Trip</a></h4>
+            <ul>
+              <li><i class="fa-solid fa-caret-right"></i> Tiket Masuk</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Peralatan (Pelampung, Helm) </li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Pemandu (Guide)</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Trekking 2 curug (Sesuai Pilihan)</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Asuransi Kegiatan</li>
+            </ul>
+            <div class="main-button">
+              <a href="property-details.html">Beli TIket</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/property-01.jpg" alt=""></a>
+            <span class="category">Wisata Curug Naga</span>
+            <h6>Rp 85.000/pax</h6>
+            <h4><a href="property-details.html">Paket 1 Trip</a></h4>
+            <ul>
+              <li><i class="fa-solid fa-caret-right"></i> Tiket Masuk</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Peralatan (Pelampung, Helm) </li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Pemandu (Guide)</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Trekking 1 curug (Sesuai Pilihan)</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Asuransi Kegiatan</li>
+            </ul>
+            <div class="main-button">
+              <a href="property-details.html">Beli TIket</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="item">
+            <a href="property-details.html"><img src="assets/images/property-01.jpg" alt=""></a>
+            <span class="category">Wisata Curug Naga</span>
+            <h6>Rp 385.000/pax</h6>
+            <h4><a href="property-details.html">Paket Camping (2 Hari 1 Malam)</a></h4>
+            <span class="category"><i class="fa-solid fa-quote-right"></i> Minimal 8 PAX</span>
+            <ul>
+             
+              <li><i class="fa-solid fa-caret-right"></i> Tiket Masuk Area</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Makan 3x</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Area Camp</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Perlengkapan Camp (Tenda, Matras, Sleeping Bag)</li><br>
+              <li><i class="fa-solid fa-caret-right"></i> Boddyrafting dan Peralatan (Pelampung, Helm)</li>
+              <li><i class="fa-solid fa-caret-right"></i> Asuransi Kegiatan</li>
+            </ul>
+            <div class="main-button">
+              <a href="camping.html">Beli TIket</a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div> -->
 
   <div class="video section">
     <div class="container">
@@ -414,111 +467,8 @@
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/counter.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script type="text/javascript">
-        function getOption() {
-            selectElement = 
-                  document.querySelector('#select1');
-            output = selectElement.value;
-            document.querySelector('.output').textContent = output;
-            if(output == 1)
-            {
-              document.querySelector('#tanggalkeluar').setAttribute("hidden", true)
-            }
-            if(output == 2){
-              document.querySelector('#tanggalkeluar').hidden = false;
-            }
-          }
-    </script>
-  <script>
-    var x, i, j, l, ll, selElmnt, a, b, c;
-    /*look for any elements with the class "custom-select":*/
-    x = document.getElementsByClassName("custom-select");
-    l = x.length;
-    for (i = 0; i < l; i++) {
-      selElmnt = x[i].getElementsByTagName("select")[0];
-      ll = selElmnt.length;
-      /*for each element, create a new DIV that will act as the selected item:*/
-      a = document.createElement("DIV");
-      a.setAttribute("class", "select-selected");
-      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-      x[i].appendChild(a);
-      /*for each element, create a new DIV that will contain the option list:*/
-      b = document.createElement("DIV");
-      b.setAttribute("class", "select-items select-hide");
-      for (j = 1; j < ll; j++) {
-        /*for each option in the original select element,
-        create a new DIV that will act as an option item:*/
-        c = document.createElement("DIV");
-        c.innerHTML = selElmnt.options[j].innerHTML;
-        c.addEventListener("click", function(e) {
-          /*when an item is clicked, update the original select box,
-          and the selected item:*/
-          var y, i, k, s, h, sl, yl;
-          s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-          sl = s.length;
-          h = this.parentNode.previousSibling;
-          for (i = 0; i < sl; i++) {
-            if (s.options[i].innerHTML == this.innerHTML) {
-              s.selectedIndex = i;
-              h.innerHTML = this.innerHTML;
-              y = this.parentNode.getElementsByClassName("same-as-selected");
-              yl = y.length;
-              for (k = 0; k < yl; k++) {
-                y[k].removeAttribute("class");
-              }
-              this.setAttribute("class", "same-as-selected");
-              break;
-            }
-          }
-          h.click();
-        });
-        b.appendChild(c);
-      }
-      x[i].appendChild(b);
-      a.addEventListener("click", function(e) {
-        /*when the select box is clicked, close any other select boxes,
-        and open/close the current select box:*/
-        e.stopPropagation();
-        closeAllSelect(this);
-        this.nextSibling.classList.toggle("select-hide");
-        this.classList.toggle("select-arrow-active");
-      });
-    }
-
-    function closeAllSelect(elmnt) {
-      /*a function that will close all select boxes in the document,
-      except the current select box:*/
-      var x, y, i, xl, yl, arrNo = [];
-      x = document.getElementsByClassName("select-items");
-      y = document.getElementsByClassName("select-selected");
-      xl = x.length;
-      yl = y.length;
-      for (i = 0; i < yl; i++) {
-        if (elmnt == y[i]) {
-          arrNo.push(i)
-        } else {
-          y[i].classList.remove("select-arrow-active");
-        }
-      }
-      for (i = 0; i < xl; i++) {
-        if (arrNo.indexOf(i)) {
-          x[i].classList.add("select-hide");
-        }
-      }
-    }
-    /*if the user clicks anywhere outside the select box,
-    then close all select boxes:*/
-    document.addEventListener("click", closeAllSelect);
-
-
-  </script>
-
+ 
 </body>
 
 </html>
+</div>
