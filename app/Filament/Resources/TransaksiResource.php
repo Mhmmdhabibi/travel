@@ -28,15 +28,22 @@ class TransaksiResource extends Resource
                     ->numeric(),
                 Forms\Components\DatePicker::make('tanggal_pembayaran')
                     ->required(),
-                    Forms\Components\FileUpload::make('bukti_transfer_path')
+                Forms\Components\FileUpload::make('bukti_transfer_path')
                     ->disk('local')
                     ->image()
                     ->imageEditor()
                     ->required(),
-
                 Forms\Components\TextInput::make('pax')
+                    ->label('Berapa Banyak Orang')
                     ->required()
                     ->maxLength(10),
+                Forms\Components\Select::make('status')
+                    ->required()
+                    ->options([
+                        'pending' => "Pending",
+                        'approve' => "Approve",
+                        'reject' => "Reject"
+                    ]),
                 Forms\Components\DatePicker::make('tanggal_masuk')
                     ->required(),
                 Forms\Components\DatePicker::make('tanggal_keluar')
@@ -48,16 +55,33 @@ class TransaksiResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('akun_penggunas_id')
+                Tables\Columns\TextColumn::make('id')
+                    ->label('Id Tiket')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('Nama Pemesan')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('paketWisata.title')
+                    ->label('Paket Pesanan')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('no_telp')
+                    ->label('Nomor Telephone')
+                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('tanggal_pembayaran')
                     ->date()
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('bukti_transfer_path')
                     ->disk('local')
+                    ->label('Bukti Transfer')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('pax')
+                    ->label('Berapa Banyak Orang')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('status')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('tanggal_masuk')
                     ->date()

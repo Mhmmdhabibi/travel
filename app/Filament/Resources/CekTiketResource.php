@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PaketWisataResource\Pages;
-use App\Filament\Resources\PaketWisataResource\RelationManagers;
-use App\Models\PaketWisata;
+use App\Filament\Resources\CekTiketResource\Pages;
+use App\Filament\Resources\CekTiketResource\RelationManagers;
+use App\Models\CekTiket;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PaketWisataResource extends Resource
+class CekTiketResource extends Resource
 {
-    protected static ?string $model = PaketWisata::class;
+    protected static ?string $model = CekTiket::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,41 +23,48 @@ class PaketWisataResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required(),
-                Forms\Components\TextInput::make('harga')
+                Forms\Components\Select::make('status')
                     ->required()
-                    ->numeric(),
-                Forms\Components\Select::make('type')
                     ->options([
-                        'wisata' => "Wisata",
-                        'camping' => 'Camping'
-                    ])
-                    ->required(),
-                Forms\Components\RichEditor::make('detail')
-                    ->required(),
-                Forms\Components\TextInput::make('norek')
-                    ->required()
-                    ->maxLength(20),
+                        'approve' => "Berhasil",
+                        'expired' => "Sudah Terpakai",
+                    ]),
+                    
             ]);
     }
+
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\TextColumn::make('id')
+                    ->searchable()
+                    ->label('Id Tiket')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('harga')
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('Nama Pemesan')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('detail')
-                    ->html()
-                    ->numeric()
+                Tables\Columns\TextColumn::make('no_telp')
+                    ->label('Nomor Telephone')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('norek')
+                Tables\Columns\TextColumn::make('tanggal_pembayaran')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('pax')
+                    ->label('Pax')
+                    
                     ->searchable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('tanggal_masuk')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('tanggal_keluar')
+                    ->date()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -65,15 +72,13 @@ class PaketWisataResource extends Resource
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -88,17 +93,13 @@ class PaketWisataResource extends Resource
             //
         ];
     }
-    public static function canViewAny(): bool
-    {
-        return auth()->user()->role == 'admin';
-    }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPaketWisatas::route('/'),
-            'create' => Pages\CreatePaketWisata::route('/create'),
-            'edit' => Pages\EditPaketWisata::route('/{record}/edit'),
+            'index' => Pages\ListCekTikets::route('/'),
+            'create' => Pages\CreateCekTiket::route('/create'),
+            'edit' => Pages\EditCekTiket::route('/{record}/edit'),
         ];
     }
 }
