@@ -37,10 +37,8 @@ class AkunPenggunaResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('no_telp')
-                    ->tel()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required()
@@ -67,9 +65,6 @@ class AkunPenggunaResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('no_telp')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -78,7 +73,7 @@ class AkunPenggunaResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])
+            ])  
         
             ->filters([
                 //

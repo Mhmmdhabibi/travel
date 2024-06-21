@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,24 +11,17 @@
   <!-- Bootstrap core CSS -->
   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-
   <!-- Additional CSS Files -->
   <link rel="stylesheet" href="/assets/css/fontawesome.css">
   <link rel="stylesheet" href="/assets/css/templatemo-villa-agency.css">
   <link rel="stylesheet" href="/assets/css/owl.css">
   <link rel="stylesheet" href="/assets/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-  <!--
-
-TemplateMo 591 villa agency
-
-https://templatemo.com/tm-591-villa-agency
-
--->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.min.css">
+  <!-- TemplateMo 591 villa agency -->
 </head>
 
 <body>
-
   <!-- ***** Preloader Start ***** -->
   <div id="js-preloader" class="js-preloader">
     <div class="preloader-inner">
@@ -94,27 +86,24 @@ https://templatemo.com/tm-591-villa-agency
     </div>
   </header>
   <!-- ***** Header Area End ***** -->
+
   <div class="section best-deal">
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
           <div class="section-heading">
             <h6>Check-Out</h6>
-
           </div>
         </div>
         <div class="col-lg-12">
           <div class="tabs-content">
             <div class="row">
-
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="appartment" role="tabpanel" aria-labelledby="appartment-tab">
                   <div class="row">
-
                     <div class="col-lg-6">
                       <img src="/assets/images/deal-01.jpg" alt="">
                     </div>
-
                     <div class="col-lg-3">
                       <div class="info-table">
                         <ul>
@@ -127,12 +116,11 @@ https://templatemo.com/tm-591-villa-agency
                     </div>
                     <div class="col-lg-3">
                       <div class="icon-button">
-                        <h6>Total Tagihan</h6>
-                        <p>Rp {{$total}}</p>
+                        <h6 style="font-size: 30px;">Total Tagihan</h6>
+                        <p style="font-size: 20px; margin-bottom: 20px;">Rp {{$total}}</p>
                         <h6>Rekening Pembayaran</h6>
                         <p>Mandiri</p>
                         <p>{{$datas->norek}} <i class="fa-solid fa-copy"></i></p>
-                        <p>An Seetrip</p>
                         <h6>Upload Bukti Pembayaran</h6>
                         <form action="/transaksi/update" method="post" enctype="multipart/form-data" id="update_form">
                           @csrf
@@ -142,8 +130,6 @@ https://templatemo.com/tm-591-villa-agency
                             <i class="fa fa-calendar"></i> Bayar Sekarang
                           </button>
                         </form>
-
-
                       </div>
                     </div>
                   </div>
@@ -223,6 +209,25 @@ https://templatemo.com/tm-591-villa-agency
   <script src="/assets/js/counter.js"></script>
   <script src="/assets/js/custom.js"></script>
 
+  <!-- SweetAlert2 script -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  @if(Session::has('success'))
+  <script>
+    window.onload = function() {
+      Swal.fire({
+        title: 'Welcome!',
+        text: 'Enjoy your visit to Wonderful Mega!',
+        icon: 'info',
+        confirmButtonText: 'Close'
+      }).then((result)=>{
+        if(result.isConfirmed)
+        {
+          window.location.href = "http://localhost:8000/keranjang"
+        }
+      });
+    };
+  </script>
+  @endif
 </body>
 
 </html>

@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaksi extends Model
+class CekTiket extends Model
 {
     use HasFactory;
-    protected $guarded = [];
-
+    protected $table = 'transaksis';
 
     public function user()
     {

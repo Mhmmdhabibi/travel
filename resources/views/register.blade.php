@@ -137,11 +137,11 @@
             </div>
             <div class="input_field">
                 <span><i class="fa fa-lock" aria-hidden="true"></i></span>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="text" name="no_telp" placeholder="Nomor Telephone" required>
             </div>
             <div class="input_field">
                 <span><i class="fa fa-lock" aria-hidden="true"></i></span>
-                <input type="password" name="password_confirmation" placeholder="Confirm Password">
+                <input type="password" name="password" placeholder="Confirm Password">
             </div>
             <input class="button" type="submit" value="Register">
             <div class="bottom_row">

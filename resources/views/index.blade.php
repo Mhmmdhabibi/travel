@@ -18,8 +18,7 @@
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-  <
-</head>
+  < </head>
 
 <body>
 
@@ -125,17 +124,17 @@
       <div class="col-md-12">
         <form class="form-data" method="post" action="/transaksi/store">
           @csrf
-        <div style=" background: orange">
-           
-        <select style="width: 100%; border: 0; background: #f35525; height: 40px; color: white" id="select1" onchange="getOption()">
-            <option value="0">Pilih Tipe</option>
-            <option value="1">Wisata</option>
-            <option value="2">Camping</option>
-        </select>
-        </div>
-        <p> 
-        <span style="display: none;" class="output"></span>
-    </p>  
+          <div style=" background: orange">
+
+            <select style="width: 100%; border: 0; background: #f35525; height: 40px; color: white" id="select1" onchange="getOption()">
+              <option value="0">Pilih Tipe</option>
+              <option value="1">Wisata</option>
+              <option value="2">Camping</option>
+            </select>
+          </div>
+          <p>
+            <span style="display: none;" class="output"></span>
+          </p>
           <label class="label-form">Nama Lengkap</label>
           <input class="input-book" type="text" name="Nama Lengkap" placeholder="Nama Lengkap">
           <label class="label-form">No Hp</label>
@@ -151,19 +150,17 @@
           <!-- <input type="text" name="Nama Lengkap" placeholder="Nama Lengkap"> -->
           <input class="input-book" type="date" id="tanggalkeluar" name="tanggal_keluar">
 
-          
-        <div class="custom-select" style="width:100%;">
-          <select name="paket_wisata">
-          <option value="0">PILIH</option>
 
-            @foreach($datas as $item)
-                <option value="{{$item->id  }}">{{$item->title}}.{!!$item->detail!!}</option>
-            @endforeach
+          <select name="paket_wisata" id="selectPaket" style="width: 100%; border: 0; background: #f35525; height: 40px; color: white">
+            <option value="0">PILIH</option>
+
+            <!-- @foreach($datas as $item)
+                <option value="{{$item->id  }}">{{$item->title}} {!!$item->detail!!} Rp {{$item->harga}}</option>
+            @endforeach -->
           </select>
-        </div>
-        <label class="label-form">Informasi Tambahan</label>
-        <textarea class="koment" rows="4" cols="50" name="comment" form="usrform" placeholder="Permintaan Khusus ( Misalnya, makanan khusus, akomodasi, dll)"></textarea>
-        <button type="submit" style="
+          <label class="label-form">Informasi Tambahan</label>
+          <textarea class="koment" rows="4" cols="50" name="comment" form="usrform" placeholder="Permintaan Khusus ( Misalnya, makanan khusus, akomodasi, dll)"></textarea>
+          <button type="submit" style="
         background-color: black; 
         color: white; 
         border: none; 
@@ -173,8 +170,8 @@
         cursor: pointer; 
         transition: background-color 0.3s ease;
     " onmouseover="this.style.backgroundColor='#333'" onmouseout="this.style.backgroundColor='black'">
-          Beli
-        </button>
+            Beli
+          </button>
 
         </form>
       </div>
@@ -421,20 +418,58 @@
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
   <script type="text/javascript">
-        function getOption() {
-            selectElement = 
-                  document.querySelector('#select1');
-            output = selectElement.value;
-            document.querySelector('.output').textContent = output;
-            if(output == 1)
-            {
-              document.querySelector('#tanggalkeluar').setAttribute("hidden", true)
-            }
-            if(output == 2){
-              document.querySelector('#tanggalkeluar').hidden = false;
-            }
-          }
-    </script>
+    function getOption() {
+      selectElement =
+        document.querySelector('#select1');
+      output = selectElement.value;
+      document.querySelector('.output').textContent = output;
+      if (output == 1) {
+        function stripHtmlTags(str) {
+          let div = document.createElement('div');
+          div.innerHTML = str;
+          return div.textContent || div.innerText || "";
+        }
+
+        document.querySelector('#tanggalkeluar').setAttribute("hidden", true)
+        fetch('http://localhost:8000/api/wisata').then((res) => res.json())
+          .then((data) => {
+            let paket = document.querySelector('#selectPaket');
+            data.map(item => {
+              const option = document.createElement('option');
+              const title = stripHtmlTags(item.title);
+              const detail = stripHtmlTags(item.detail);
+              const harga = stripHtmlTags(item.harga);
+
+              option.value = item.id;
+              option.textContent = `${title} - ${detail} - ${harga}`; // Format the option text
+              paket.appendChild(option);
+            })
+          })
+      }
+      if (output == 2) {
+        function stripHtmlTags(str) {
+          let div = document.createElement('div');
+          div.innerHTML = str;
+          return div.textContent || div.innerText || "";
+        }
+        document.querySelector('#tanggalkeluar').hidden = false;
+        fetch('http://localhost:8000/api/camping').then((res) => res.json())
+          .then((data) => {
+            let paket = document.querySelector('#selectPaket');
+            data.map(item => {
+              const option = document.createElement('option');
+              const title = stripHtmlTags(item.title);
+              const detail = stripHtmlTags(item.detail);
+              const harga = stripHtmlTags(item.harga);
+
+              option.value = item.id;
+              option.textContent = `${title} - ${detail} - ${harga}`; // Format the option text
+              paket.appendChild(option);
+            })
+          })
+      }
+    }
+  </script>
   <script>
     var x, i, j, l, ll, selElmnt, a, b, c;
     /*look for any elements with the class "custom-select":*/
@@ -515,8 +550,6 @@
     /*if the user clicks anywhere outside the select box,
     then close all select boxes:*/
     document.addEventListener("click", closeAllSelect);
-
-
   </script>
 
 </body>

@@ -99,22 +99,34 @@ https://templatemo.com/tm-591-villa-agency
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="appartment" role="tabpanel" aria-labelledby="appartment-tab">
                   <div class="row">
-                    <div class="col-lg-3">
-                      <div class="info-table">
+                    <div class="col-lg-3" style="display: flex; width: 100%">
+                    @foreach($datas as $data)
+
+                      <div class="info-table" style="width: 500px;">
                         <img style="width:100%;" src="assets/images/deal-01.jpg" alt="">
                         <ul>
                           <h6 style="margin-top:20px;">Tiket Curug Naga</h6>
                           <li style="color:#f35525;font-weight: 700;"><i class="fa-solid fa-caret-right"></i> Jumlah Tiket</li><br>
-                          <li> 1 (satu)</li><br>
+                          <li>{{$data->pax}}</li><br>
                           <li style="color:#f35525;font-weight: 700;"><i class="fa-solid fa-caret-right"></i> ID Tiket</li><br>
-                          <li> 23114242243</li><br>
+                          @if($data->status == 'approve')
+                          <li>{{$data->id}}</li><br>
+                          @else 
+                          <li>Mohon Tunggu Konfirmasi</li><br>
+                          @endif
                           <li style="color:#f35525;font-weight: 700;"><i class="fa-solid fa-caret-right"></i> Tanggal Transaksi</li><br>
-                          <li> 21-10-2024</li><br>
+                          <li>{{$data->tanggal_pembayaran}}</li><br>
                           <li style="color:#f35525;font-weight: 700;"><i class="fa-solid fa-caret-right"></i> Status Transaksi</li><br>
-                          <li> Proses</li><br>
+                          <li> {{$data->status}}</li><br>
+                          @If($data->status == 'reject')
+                          <li style="color: red;">Pembayaran Tidak Valid</li><br>
+
+                          @endif
                           
                         </ul>
                       </div>
+                      @endforeach
+  
                     </div>
                   </div>
                 </div>

@@ -34,13 +34,14 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('akun_penggunas_id')->unsigned();
             $table->bigInteger('paket_wisata_id')->unsigned();
-
-            $table->date('tanggal_pembayaran');
+            $table->date('tanggal_pembayaran')->nullable();
+            $table->text('bukti_transfer_path')->nullable();
             $table->char('pax',10);
             $table->char('no_telp', 13);
             $table->text('alamat');
             $table->date('tanggal_masuk');
             $table->date('tanggal_keluar');
+            $table->enum('status', ['pending', 'approve', 'reject', 'berhasil', 'expired']);
             $table->foreign('akun_penggunas_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreign('paket_wisata_id')->references('id')->on('paket_wisatas')->cascadeOnDelete();
 

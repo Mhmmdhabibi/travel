@@ -82,6 +82,7 @@ Route::post('/register', function(Request $request)
         'name' => $request->input('name'),
         'email' => $request->input('email'),
         'no_telp' => $request->input('no_telp'),
+        'role' => 'user',
         'password' => Hash::make($request->input('password')),
     ]);
 
@@ -101,18 +102,38 @@ Route::get('/login', function (){
 Route::post('/transaksi/store', function(Request $request){
     $faker = Faker\Factory::create('id_ID');
 
-    if(!auth()->user())
-    {
+    if (!auth()->user()) {
         return redirect('/login');
     }
 
-    $tanggal_keluar = $request->tanggal_keluar;
-    if(!$request->tanggal_keluar)
-    {
-        $tanggal_keluar = $request->tanggal_masuk;
+    // Validate and process the dates
+    $tanggal_masuk = $request->tanggal_masuk;
+    $tanggal_keluar = $request->tanggal_keluar ?? $request->tanggal_masuk;
+
+    // Count transactions within the date range
+    $countTransactions = Transaksi::where('paket_wisata_id', $request->paket_wisata)
+        ->where(function ($query) use ($tanggal_masuk, $tanggal_keluar) {
+            $query->where(function ($query) use ($tanggal_masuk, $tanggal_keluar) {
+                $query->whereBetween('tanggal_masuk', [$tanggal_masuk, $tanggal_keluar])
+                    ->orWhereBetween('tanggal_keluar', [$tanggal_masuk, $tanggal_keluar]);
+            })->orWhere(function ($query) use ($tanggal_masuk, $tanggal_keluar) {
+                $query->where('tanggal_masuk', '<', $tanggal_masuk)
+                    ->where('tanggal_keluar', '>', $tanggal_keluar);
+            });
+        })
+        ->count();
+
+    $pid = PaketWisata::find($request->paket_wisata);
+
+    // Check if the count exceeds 10
+    if ($countTransactions >= 10 && $pid->type == 'camping') {
+        return response('Booking Penuh');
     }
+
+    // Create a random ID for the transaction
     $id = mt_rand(1000000, 9999999);
 
+    // Create the transaction record
     Transaksi::create([
         'id' => $id,
         'akun_penggunas_id' => auth()->user()->id,
@@ -120,12 +141,12 @@ Route::post('/transaksi/store', function(Request $request){
         'pax' => $request->jumlah_peserta,
         'alamat' => $request->alamat,
         'no_telp' => $request->nomor_hp,
-        'tanggal_masuk' => $request->tanggal_masuk,
-        'tanggal_keluar' => $tanggal_keluar ,
-
+        'tanggal_masuk' => $tanggal_masuk,
+        'tanggal_keluar' => $tanggal_keluar,
     ]);
 
-    return redirect("/property-detail/".$request->paket_wisata."/".$id);
+    // Redirect to the property detail page
+    return redirect("/property-detail/{$request->paket_wisata}/{$id}");
 });
 
 Route::post('/transaksi/update', function(Request $request) {
@@ -136,7 +157,7 @@ Route::post('/transaksi/update', function(Request $request) {
         $upload = Transaksi::find($request->idTrans);
         if ($upload) {
             $upload->tanggal_pembayaran = date('Y-m-d');
-            $upload->bukti_transfer_path = "/storage/".$path; // Save the path if you have a column for it
+            $upload->bukti_transfer_path = $path; // Save the path if you have a column for it
             $upload->save();
         } else {
             return response()->json(['message' => 'Transaction not found'], 404);
@@ -172,7 +193,10 @@ Route::post('/login', function(Request $request){
 
 
 Route::get('/keranjang', function (){
-    return view('keranjang');
+    $datas = Transaksi::where('akun_penggunas_id', auth()->user()->id)
+                      ->get();
+
+    return view('keranjang', ['datas' => $datas]);
 });
 Route::get('/jadwal', function (){
     return view('jadwal');
