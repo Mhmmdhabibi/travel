@@ -59,6 +59,8 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
                 CheckAdminRole::class, // Add the custom middleware here
 
-            ]);
+            ])
+            ->databaseNotificationsPolling('2s')
+            ->databaseNotifications();
     }
 }

@@ -3,15 +3,17 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CekTiketResource\Pages;
-use App\Filament\Resources\CekTiketResource\RelationManagers;
 use App\Models\CekTiket;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Filament\Tables\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\BulkAction;
+use Filament\Tables\Actions\ExportBulkAction;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Database\Eloquent\Collection;
 
 class CekTiketResource extends Resource
 {
@@ -29,7 +31,7 @@ class CekTiketResource extends Resource
                         'approve' => "Berhasil",
                         'expired' => "Sudah Terpakai",
                     ]),
-                    
+
             ]);
     }
 
@@ -55,9 +57,10 @@ class CekTiketResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('pax')
                     ->label('Pax')
-                    
+
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
+                    ->badge()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('tanggal_masuk')
                     ->date()
@@ -79,11 +82,19 @@ class CekTiketResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+
+                Action::make('Approve')
+                    ->button()
+                    ->url(fn (CekTiket $record): string => route('expired', ['id' => $record]))
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
+                BulkAction::make('download_pdf')
+                    ->label('Download PDFs')
+                    ->action(function (Collection $records) {
+                        $pdf = FacadePdf::loadView('pdf', ['records' => $records]);
+                        return response()->streamDownload(fn () => print($pdf->stream()), 'ListTiket.pdf');
+                    }),
             ]);
     }
 

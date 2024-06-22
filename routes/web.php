@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\PdfController;
+use App\Models\Jadwal;
 use App\Models\PaketWisata;
 use App\Models\Transaksi;
 use App\Models\User;
+use Filament\Notifications\Notification;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +72,15 @@ Route::get('/property-detail/{id}/{idTrans}', function ($id, $idTrans){
 
 });
 
+Route::get('pdf/{order}', PdfController::class)->name('pdf'); 
+
+
+Route::get('/send', function (){
+    Notification::make()
+        ->title('New')
+        ->sendToDatabase(auth()->user());
+});
+
 
 Route::get('/register', function()
 {
@@ -109,6 +122,7 @@ Route::post('/transaksi/store', function(Request $request){
     // Validate and process the dates
     $tanggal_masuk = $request->tanggal_masuk;
     $tanggal_keluar = $request->tanggal_keluar ?? $request->tanggal_masuk;
+ 
 
     // Count transactions within the date range
     $countTransactions = Transaksi::where('paket_wisata_id', $request->paket_wisata)
@@ -123,12 +137,16 @@ Route::post('/transaksi/store', function(Request $request){
         })
         ->count();
 
+        $jadwal_penuh = Jadwal::where('tanggal_penuh', $request->tanggal_masuk)->count();
     $pid = PaketWisata::find($request->paket_wisata);
 
     // Check if the count exceeds 10
-    if ($countTransactions >= 10 && $pid->type == 'camping') {
+    if ($countTransactions >= 100 && $pid->type == 'camping' || $jadwal_penuh >= 1)  {
         return response('Booking Penuh');
     }
+
+
+
 
     // Create a random ID for the transaction
     $id = mt_rand(1000000, 9999999);
@@ -144,9 +162,12 @@ Route::post('/transaksi/store', function(Request $request){
         'tanggal_masuk' => $tanggal_masuk,
         'tanggal_keluar' => $tanggal_keluar,
     ]);
-
+    Notification::make()
+    ->title('Order Baru')
+    ->sendToDatabase(auth()->user());
     // Redirect to the property detail page
     return redirect("/property-detail/{$request->paket_wisata}/{$id}");
+    
 });
 
 Route::post('/transaksi/update', function(Request $request) {
@@ -167,6 +188,37 @@ Route::post('/transaksi/update', function(Request $request) {
     }
 
     return redirect()->back()->with('success', 'Payment proof uploaded successfully.');
+});
+
+
+Route::post('/cekJadwal', function(Request $request){
+    $tanggal_masuk = $request->tanggal_masuk;
+    $tanggal_keluar = $request->tanggal_keluar ?? $request->tanggal_masuk;
+ 
+
+    // Count transactions within the date range
+    $countTransactions = Transaksi::where('paket_wisata_id', $request->paket_wisata)
+        ->where(function ($query) use ($tanggal_masuk, $tanggal_keluar) {
+            $query->where(function ($query) use ($tanggal_masuk, $tanggal_keluar) {
+                $query->whereBetween('tanggal_masuk', [$tanggal_masuk, $tanggal_keluar])
+                    ->orWhereBetween('tanggal_keluar', [$tanggal_masuk, $tanggal_keluar]);
+            })->orWhere(function ($query) use ($tanggal_masuk, $tanggal_keluar) {
+                $query->where('tanggal_masuk', '<', $tanggal_masuk)
+                    ->where('tanggal_keluar', '>', $tanggal_keluar);
+            });
+        })
+        ->count();
+
+        $jadwal_penuh = Jadwal::where('tanggal_penuh', $request->tanggal_masuk)->count();
+    $pid = PaketWisata::find($request->paket_wisata);
+
+    // Check if the count exceeds 10
+    if ($countTransactions >= 100 && $pid->type == 'camping' || $jadwal_penuh >= 1)  {
+        return redirect()->back()->with('status', 'kosong');
+    }else{
+        return redirect()->back();
+    }
+
 });
 
 Route::post('/login', function(Request $request){
@@ -199,10 +251,24 @@ Route::get('/keranjang', function (){
     return view('keranjang', ['datas' => $datas]);
 });
 Route::get('/jadwal', function (){
-    return view('jadwal');
+    $datas = PaketWisata::all();
+    return view('jadwal', ['datas' => $datas]);
 
 
 
 
 });
 
+Route::get('approve', function(Request $request){
+    $data = Transaksi::find($request->id);
+    $data->status = 'approve';
+    $data->save();
+    return redirect()->back();
+})->name('approve');
+
+Route::get('expired', function(Request $request){
+    $data = Transaksi::find($request->id);
+    $data->status = 'expired';
+    $data->save();
+    return redirect()->back();
+})->name('expired');

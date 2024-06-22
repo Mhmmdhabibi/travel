@@ -39,6 +39,14 @@ class AkunPenggunaResource extends Resource
                 Forms\Components\TextInput::make('no_telp')
                     ->required()
                     ->maxLength(255),
+                    Forms\Components\Select::make('role')
+                    ->required()
+                    ->options([
+                        'admin' => 'Admin',
+                        'user' => 'User'
+                    ])
+                    ,
+                
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required()
@@ -54,16 +62,14 @@ class AkunPenggunaResource extends Resource
         if(auth()->user()->role == 'admin')
         {
             return $table
-            ->modifyQueryUsing(function (Builder $query){
-                $query->where('role', 'user');
-
-            })
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('no_telp')
+                    ->searchable(),
+                    Tables\Columns\TextColumn::make('role')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

@@ -28,6 +28,15 @@ class PaketWisataResource extends Resource
                 Forms\Components\TextInput::make('harga')
                     ->required()
                     ->numeric(),
+                Forms\Components\FileUpload::make('gambar')
+                    ->disk('local')
+                    ->imageEditor()
+                    ->required(),
+                Forms\Components\TextInput::make('fees')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('percentage')
+                    ->required(),
                 Forms\Components\Select::make('type')
                     ->options([
                         'wisata' => "Wisata",
@@ -45,6 +54,7 @@ class PaketWisataResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->numeric()
@@ -52,10 +62,21 @@ class PaketWisataResource extends Resource
                 Tables\Columns\TextColumn::make('harga')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->sortable(),
+                Tables\Columns\ImageColumn::make('gambar')
+                    ->disk('local')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('fees')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('percentage')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('detail')
                     ->html()
                     ->numeric()
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('norek')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
