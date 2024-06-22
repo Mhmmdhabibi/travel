@@ -69,17 +69,16 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li><a href="#home" class="active">Home</a></li>
+              <li><a href="#" class="active">Home</a></li>
               <li><a href="#tentang">Tentang Kami</a></li>
-              <li><a href="#tiket">Beli Tiket</a></li>
+              <li><a href="#booking">Beli Tiket</a></li>
               <li><a href="keranjang">Keranjang</a></li>
               <li><a href="#info">Contact Us</a></li>
-              <li><a href="keranjang">Keranjang</a></li>
               @if(auth()->user())
               <li><a href="/logout">Logout</a></li>
               @endif
               @if(!auth()->user())
-              <li><a href="/login">Login</a></li>
+              <li><a href="/login">Login / Sign Up</a></li>
 
               @endif
               <li><a href="jadwal"><i class="fa fa-calendar"></i> Lihat Jadwal</a></li>
@@ -119,64 +118,7 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <form class="form-data" method="post" action="/transaksi/store">
-          @csrf
-          <div style=" background: orange">
-
-            <select style="width: 100%; border: 0; background: #f35525; height: 40px; color: white" id="select1" onchange="getOption()">
-              <option value="0">Pilih Tipe</option>
-              <option value="1">Wisata</option>
-              <option value="2">Camping</option>
-            </select>
-          </div>
-          <p>
-            <span style="display: none;" class="output"></span>
-          </p>
-          <label class="label-form">Nama Lengkap</label>
-          <input class="input-book" type="text" name="Nama Lengkap" placeholder="Nama Lengkap">
-          <label class="label-form">No Hp</label>
-          <input class="input-book" type="text" name="nomor_hp" placeholder="No HP (Whatsapp)">
-          <label class="label-form">Alamat</label>
-          <input class="input-book" type="text" name="alamat" placeholder="Alamat">
-          <label class="label-form">Jumlah Peserta</label>
-          <input class="input-book" type="text" name="jumlah_peserta" placeholder="Jumlah Peserta">
-          <label class="label-form">Tanggal Booking</label>
-          <!-- <input type="text" name="Nama Lengkap" placeholder="Nama Lengkap"> -->
-          <input class="input-book" type="date" id="tanggalmasuk" name="tanggal_masuk">
-          <label class="label-form">Tanggal Booking</label>
-          <!-- <input type="text" name="Nama Lengkap" placeholder="Nama Lengkap"> -->
-          <input class="input-book" type="date" id="tanggalkeluar" name="tanggal_keluar">
-
-
-          <select name="paket_wisata" id="selectPaket" style="width: 100%; border: 0; background: #f35525; height: 40px; color: white">
-            <option value="0">PILIH</option>
-
-            <!-- @foreach($datas as $item)
-                <option value="{{$item->id  }}">{{$item->title}} {!!$item->detail!!} Rp {{$item->harga}}</option>
-            @endforeach -->
-          </select>
-          <label class="label-form">Informasi Tambahan</label>
-          <textarea class="koment" rows="4" cols="50" name="comment" form="usrform" placeholder="Permintaan Khusus ( Misalnya, makanan khusus, akomodasi, dll)"></textarea>
-          <button type="submit" style="
-        background-color: black; 
-        color: white; 
-        border: none; 
-        padding: 10px 20px; 
-        font-size: 16px; 
-        border-radius: 25px; 
-        cursor: pointer; 
-        transition: background-color 0.3s ease;
-    " onmouseover="this.style.backgroundColor='#333'" onmouseout="this.style.backgroundColor='black'">
-            Beli
-          </button>
-
-        </form>
-      </div>
-    </div>
-  </div>
+  X
 
   <div class="featured section" id="tentang">
     <div class="container">
