@@ -83,7 +83,7 @@ class CekTiketResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
 
-                Action::make('Approve')
+                Action::make('Expired')
                     ->button()
                     ->url(fn (CekTiket $record): string => route('expired', ['id' => $record]))
             ])
