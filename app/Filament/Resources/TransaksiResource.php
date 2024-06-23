@@ -6,11 +6,17 @@ use App\Filament\Resources\TransaksiResource\Pages;
 use App\Filament\Resources\TransaksiResource\RelationManagers;
 use App\Models\Transaksi;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TransaksiResource extends Resource
@@ -19,10 +25,12 @@ class TransaksiResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+
                 Forms\Components\TextInput::make('akun_penggunas_id')
                     ->required()
                     ->numeric(),
@@ -54,8 +62,10 @@ class TransaksiResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+
             ->columns([
                 Tables\Columns\TextColumn::make('id')
+                    ->searchable()
                     ->label('Id Tiket')
                     ->numeric()
                     ->sortable(),
@@ -70,7 +80,6 @@ class TransaksiResource extends Resource
                 Tables\Columns\TextColumn::make('no_telp')
                     ->label('Nomor Telephone')
                     ->sortable(),
-
                 Tables\Columns\TextColumn::make('tanggal_pembayaran')
                     ->date()
                     ->sortable(),
@@ -82,6 +91,7 @@ class TransaksiResource extends Resource
                     ->label('Berapa Banyak Orang')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
+                    ->badge()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('tanggal_masuk')
                     ->date()
@@ -101,9 +111,15 @@ class TransaksiResource extends Resource
             ->filters([
                 //
             ])
+            ->selectable()
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('Approve')
+                ->button()
+                ->url(fn (Transaksi $record): string => route('approve', ['id'=>$record]))
+
             ])
+
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

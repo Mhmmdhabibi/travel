@@ -15,19 +15,12 @@ return new class extends Migration
             $table->id();
             $table->enum('type', ['wisata', 'camping']);
             $table->text('title');
+            $table->text('gambar');
             $table->bigInteger('harga');
+            $table->bigInteger('fees');
+            $table->text('percentage');
             $table->text('detail');
             $table->char('norek', 20);
-            $table->timestamps();
-        });
-        Schema::create('akun_penggunas', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('no_telp')->unique()->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
         Schema::create('transaksis', function (Blueprint $table) {

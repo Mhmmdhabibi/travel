@@ -9,5 +9,6 @@ class Jadwal extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public $table = 'jadwal';
 
 }

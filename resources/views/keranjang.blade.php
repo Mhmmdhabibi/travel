@@ -118,9 +118,11 @@ https://templatemo.com/tm-591-villa-agency
                           <li>{{$data->tanggal_pembayaran}}</li><br>
                           <li style="color:#f35525;font-weight: 700;"><i class="fa-solid fa-caret-right"></i> Status Transaksi</li><br>
                           <li> {{$data->status}}</li><br>
-                          @If($data->status == 'reject')
+                          @if($data->status == 'reject')
                           <li style="color: red;">Pembayaran Tidak Valid</li><br>
-
+                          @endif
+                          @if($data->status == 'pending')
+                          <a href="/property-detail/{{$data->paket_wisata_id}}/{{$data->id}}">Selesaikan Pembayaran</a>
                           @endif
                           
                         </ul>

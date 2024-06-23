@@ -69,11 +69,16 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
+<<<<<<< HEAD
               <li><a href="home" class="active">Home</a></li>
               <li><a href="#tentang"></a></li>
               <li><a href="#tiket"></a></li>
               <li><a href="#"></a></li>
               <li><a href="#info"></a></li>
+=======
+              <li><a href="/welcome" class="active">Home</a></li>
+
+>>>>>>> 73515b953cd78cb4615bf69821ac5dd3414a5751
               <li><a href="#"><i class="fa fa-calendar"></i> Lihat Jadwal</a></li>
             </ul>
             <a class='menu-trigger'>
@@ -102,7 +107,7 @@
                 <div class="tab-pane fade show active" id="appartment" role="tabpanel" aria-labelledby="appartment-tab">
                   <div class="row">
                     <div class="col-lg-6">
-                      <img src="/assets/images/deal-01.jpg" alt="">
+                      <img src="/storage/{{$datas->gambar}}" alt="">
                     </div>
                     <div class="col-lg-3">
                       <div class="info-table">

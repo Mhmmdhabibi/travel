@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaksi extends Model
+class Report extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $table = 'transaksis';
+
 
 
     public function user()
@@ -18,6 +20,6 @@ class Transaksi extends Model
 
     public function paketWisata()
     {
-        return $this->belongsTo(PaketWisata::class, 'paket_wisata_id');
+        return $this->belongsTo(PaketWisata::class);
     }
 }
