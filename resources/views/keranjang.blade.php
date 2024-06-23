@@ -94,11 +94,11 @@
             <div class="row">
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="appartment" role="tabpanel" aria-labelledby="appartment-tab">
-                  <div class="row">
-                    <div class="col-lg-3" style="display: flex; width: 100%">
+                  <div class="row justify-content-center">
                     @foreach($datas as $data)
-                      <div class="info-table" style="width: 500px;">
-                        <img style="width:100%;" src="assets/images/deal-01.jpg" alt="">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                      <div class="info-table">
+                        <img src="assets/images/deal-01.jpg" style="width:100%;" alt="">
                         <ul>
                           <h6 style="margin-top:20px;">Tiket Curug Naga</h6>
                           <li style="color:#f35525;font-weight: 700;"><i class="fa-solid fa-caret-right"></i> Jumlah Tiket</li><br>
@@ -117,63 +117,13 @@
                           <li style="color: red;">Pembayaran Tidak Valid</li><br>
                           @endif
                           @if($data->status == 'pending')
-                          <a href="/property-detail/{{$data->paket_wisata_id}}/{{$data->id}}">Selesaikan Pembayaran / Tunggu Konfirmasi Admin</a>
+                          <li><a href="/property-detail/{{$data->paket_wisata_id}}/{{$data->id}}">Selesaikan Pembayaran / Tunggu Konfirmasi Admin</a></li><br>
                           @endif
                         </ul>
                         <button type="button" class="btn btn-primary" onclick="showSyarat()">Ketentuan</button>
                       </div>
+                    </div>
                     @endforeach
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="villa" role="tabpanel" aria-labelledby="villa-tab">
-                  <div class="row">
-                    <div class="col-lg-3">
-                      <div class="info-table">
-                        <ul>
-                          <li>Total Flat Space <span>250 m2</span></li>
-                          <li>Floor number <span>26th</span></li>
-                          <li>Number of rooms <span>5</span></li>
-                          <li>Parking Available <span>Yes</span></li>
-                          <li>Payment Process <span>Bank</span></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <img src="assets/images/deal-02.jpg" alt="">
-                    </div>
-                    <div class="col-lg-3">
-                      <h4>Detail Info About Villa</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
-                      <div class="icon-button">
-                        <a href="property-details.html"><i class="fa fa-calendar"></i> Beli TIket</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="penthouse" role="tabpanel" aria-labelledby="penthouse-tab">
-                  <div class="row">
-                    <div class="col-lg-3">
-                      <div class="info-table">
-                        <ul>
-                          <li>Total Flat Space <span>320 m2</span></li>
-                          <li>Floor number <span>34th</span></li>
-                          <li>Number of rooms <span>6</span></li>
-                          <li>Parking Available <span>Yes</span></li>
-                          <li>Payment Process <span>Bank</span></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <img src="assets/images/deal-03.jpg" alt="">
-                    </div>
-                    <div class="col-lg-3">
-                      <h4>Extra Info About Penthouse</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
-                      <div class="icon-button">
-                        <a href="property-details.html"><i class="fa fa-calendar"></i> Beli TIket</a>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
