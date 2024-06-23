@@ -118,7 +118,7 @@
     </div>
   </div>
 
-  X
+  
 
   <div class="featured section" id="tentang">
     <div class="container">
