@@ -272,8 +272,6 @@ Wonderfulmega.com, didukung oleh seetrip.id, memasarkan paket wisata ini dengan 
   }
 </style>
 
-
-
                     </div>
                     <div class="col-lg-6">
                       <img src="assets/images/deal-01.jpg" alt="">
