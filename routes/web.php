@@ -138,10 +138,9 @@ Route::post('/transaksi/store', function(Request $request){
         ->count();
 
         $jadwal_penuh = Jadwal::where('tanggal_penuh', $request->tanggal_masuk)->count();
-    $pid = PaketWisata::find($request->paket_wisata);
-
+        $pid = PaketWisata::find($request->paket_wisata);
     // Check if the count exceeds 10
-    if ($countTransactions >= 100 && $pid->type == 'camping' || $jadwal_penuh >= 1)  {
+    if ($countTransactions >= 100 && $pid->type == "camping" | $jadwal_penuh >= 1)  {
         return response('Booking Penuh');
     }
 
@@ -222,6 +221,11 @@ Route::post('/cekJadwal', function(Request $request){
 
 });
 
+Route::get('/syarat', function()
+{
+    return view('syaratdanketentuan');
+});
+
 Route::post('/login', function(Request $request){
     $request->validate([
         'email' => 'required|email',
@@ -246,6 +250,10 @@ Route::post('/login', function(Request $request){
 
 
 Route::get('/keranjang', function (){
+    if(!auth()->user())
+    {
+        return redirect('/login');
+    }
     $datas = Transaksi::where('akun_penggunas_id', auth()->user()->id)
                       ->get();
 
