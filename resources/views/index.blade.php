@@ -72,15 +72,21 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li><a href="#home" class="active">Home</a></li>
+              <li><a href="#" class="active">Home</a></li>
               <li><a href="#tentang">Tentang Kami</a></li>
+<<<<<<< HEAD
+              <li><a href="#booking">Beli Tiket</a></li>
+              <li><a href="keranjang">Keranjang</a></li>
+              <li><a href="#info">Contact Us</a></li>
+=======
               <li><a href="keranjang">Keranjang</a></li>
               <li><a href="keranjang">Keranjang</a></li>
+>>>>>>> 73515b953cd78cb4615bf69821ac5dd3414a5751
               @if(auth()->user())
               <li style="color: red;"><a href="/logout" style="color: red;">Logout</a></li>
               @endif
               @if(!auth()->user())
-              <li><a href="/login">Login</a></li>
+              <li><a href="/login">Login / Sign Up</a></li>
 
               @endif
               <li><a href="jadwal"><i class="fa fa-calendar"></i> Lihat Jadwal</a></li>
@@ -120,6 +126,9 @@
     </div>
   </div>
 
+<<<<<<< HEAD
+  
+=======
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -179,6 +188,7 @@
       </div>
     </div>
   </div>
+>>>>>>> 73515b953cd78cb4615bf69821ac5dd3414a5751
 
   <div class="featured section" id="tentang">
     <div class="container">

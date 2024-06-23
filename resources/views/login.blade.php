@@ -34,7 +34,7 @@
             margin-bottom: 20px;
         }
         .title_container h2 {
-            color: #FF6F61;
+            color: #f35525;
             font-size: 24px;
             margin: 0;
         }
@@ -49,24 +49,24 @@
         .input_field input {
             width: 100%;
             padding: 10px;
-            border: 1px solid #FF6F61;
+            border: 1px solid #f35525;
             border-radius: 4px;
             font-size: 14px;
             outline: none;
             transition: border-color 0.3s ease;
         }
         .input_field input:focus {
-            border-color: #FF6F61;
+            border-color: #f35525;
         }
         .input_field span {
             position: absolute;
             left: 10px;
             top: 50%;
             transform: translateY(-50%);
-            color: #FF6F61;
+            color: #f35525;
         }
         .button {
-            background-color: #FF6F61;
+            background-color: #f35525;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -77,7 +77,7 @@
             text-transform: uppercase;
         }
         .button:hover {
-            background-color: #E5584F;
+            background-color: #f35525;
         }
         .bottom_row {
             display: flex;
@@ -95,7 +95,7 @@
             margin-right: 5px;
         }
         .forgot_pw a {
-            color: #FF6F61;
+            color: #f35525;
             text-decoration: none;
             transition: color 0.3s ease;
         }
