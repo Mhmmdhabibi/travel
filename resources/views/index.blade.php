@@ -74,6 +74,7 @@
             <ul class="nav">
               <li><a href="#" class="active">Home</a></li>
               <li><a href="#tentang">Tentang Kami</a></li>
+              <li><a href="#keranjang">Beli Tiket</a></li>
               <li><a href="keranjang">Keranjang</a></li>
               @if(auth()->user())
               <li style="color: red;"><a href="/logout" style="color: red;">Logout</a></li>
@@ -100,8 +101,8 @@
       <div class="item item-1">
         <div class="header-text">
           <!-- <span class="category">Puncak, <em>Bogor</em></span> -->
-          <h5 style="text-align:center;">Wonderful Mega</h5>
-          <p style="color: white;text-align: center;">Curug Naga</p>
+          <h5 style="text-align:center;"></h5>
+          <p style="color: white;text-align: center;"></p>
         </div>
       </div>
       <!-- <div class="item item-2">
@@ -123,9 +124,217 @@
     <div class="row">
       <div class="col-md-12">
 
-        <form class="form-data" method="post" action="/transaksi/store">
+      
+
+  <div class="featured section" id="tentang">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="left-image">
+            <img src="assets/images/featured.jpg" alt="">
+            <a href="property-details.html"><img src="assets/images/featured-icon.png" alt="" style="max-width: 60px; padding: 0px;"></a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="section-heading">
+            <h6>Sekilas Tentang</h6>
+            <h2>Wisata Curug Naga</h2>
+          </div>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Apa Itu Wisata Curug Naga?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Selamat datang di situs resmi Wisata Curug Naga. Curug Naga adalah destinasi wisata alam yang terletak di daerah Mega Mendung, Bogor. Tempat ini terkenal dengan keindahan air terjunnya dan suasana alam yang masih asri. Wisata Curug Naga menawarkan pengalaman berkemah (camping) di tengah hutan pinus yang sejuk dan alami, memberikan kesempatan bagi pengunjung untuk merasakan sensasi bermalam di alam terbuka.Salah satu kegiatan unggulan yang ditawarkan di Curug Naga adalah body rafting. Kegiatan ini melibatkan pengarungan sungai dengan cara mengapung di atas air menggunakan jaket pelampung, mengikuti arus sungai yang menantang dan seru. Pengunjung akan merasakan adrenalin yang tinggi saat melewati jeram-jeram sungai dan air terjun kecil yang ada di 
+
+sepanjang rute.
+Wonderfulmega.com, didukung oleh seetrip.id, memasarkan paket wisata ini dengan berbagai fasilitas dan layanan yang memadai, termasuk pemandu profesional, perlengkapan keselamatan, dan kebutuhan dasar untuk camping. Pengalaman wisata di Curug Naga ini cocok bagi para pencinta alam dan petualangan yang ingin menikmati keindahan alam sekaligus mencari tantangan dan keseruan.
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Bagi pengunjung yang ingin mengunjungi Wisata Curug Naga, wajib melakukan reservasi/booking terlebih dahulu atau melakukan pembelian tiket di wonderfulmega.com, karena untuk persiapan peralatan dan logistik di lapangan.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="info-table">
+            <ul>
+              <li>
+                <img src="assets/images/info-icon-01.png" alt="" style="max-width: 52px;">
+                <h4>Parkiran Luas<br><span>Akses Bus</span></h4>
+              </li>
+              <li>
+                <img src="assets/images/info-icon-04.png" alt="" style="max-width: 52px;">
+                <h4>Safety<br><span>Keselamatan nomor 1</span></h4>
+              </li>
+              <li>
+                <img src="assets/images/info-icon-03.png" alt="" style="max-width: 52px;">
+                <h4>Tiket <br><span>Online Sistem</span></h4>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section best-deal">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="section-heading">
+            <h6>| Wisata Viral</h6>
+            <h2>Gallery Kami</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="tabs-content">
+            <div class="row">
+              <div class="nav-wrapper ">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="appartment-tab" data-bs-toggle="tab" data-bs-target="#appartment" type="button" role="tab" aria-controls="appartment" aria-selected="true">Body Rafting</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="villa-tab" data-bs-toggle="tab" data-bs-target="#villa" type="button" role="tab" aria-controls="villa" aria-selected="false">Camping</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="penthouse-tab" data-bs-toggle="tab" data-bs-target="#penthouse" type="button" role="tab" aria-controls="penthouse" aria-selected="false">Penyewaan Alat Camping</button>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="appartment" role="tabpanel" aria-labelledby="appartment-tab">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      
+  
+                    <div class="section-heading text-center">
+            <h6>| Lihat Video</h6>
+          </div>
+          <div class="video-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <div class="video-frame">
+          <img src="assets/images/video-frame.jpg" alt="">
+          <a href="https://youtube.com" target="_blank"><i class="fa fa-play"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .video-content {
+    margin-top: 20px; /* Atur margin atas sesuai kebutuhan */
+  }
+
+  .video-frame {
+    position: relative;
+    width: 100%; /* Lebar kontainer video */
+    padding-top: 56.25%; /* Rasio 16:9 (56.25%) untuk video */
+    overflow: hidden;
+  }
+
+  .video-frame img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar mengisi kontainer dan menjaga rasio aspek */
+  }
+
+  .video-frame a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px; /* Ukuran ikon play */
+    color: #fff;
+    text-decoration: none;
+  }
+</style>
+
+
+
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="assets/images/deal-01.jpg" alt="">
+                    </div>
+                    <div class="col-lg-3">
+                      <h4>Extra Info About Property</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse.
+                        <br><br>When you need free CSS templates, you can simply type TemplateMo in any search engine website. In addition, you can type TemplateMo Portfolio, TemplateMo One Page Layouts, etc.
+                      </p>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="villa" role="tabpanel" aria-labelledby="villa-tab">
+                  <div class="row">
+                    <div class="col-lg-3">
+
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="assets/images/deal-02.jpg" alt="">
+                    </div>
+                    <div class="col-lg-3">
+                      <h4>Detail Info About Villa</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="penthouse" role="tabpanel" aria-labelledby="penthouse-tab">
+                  <div class="row">
+                    <div class="col-lg-3">
+
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="assets/images/deal-03.jpg" alt="">
+                    </div>
+                    <div class="col-lg-3">
+                      <h4>Extra Info About Penthouse</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+ 
+
+ 
+  <form class="form-data" id="keranjang" method="post" action="/transaksi/store">
+        <p style="text-align: center;">Reservasi Online</p><br>
           @csrf
           <div style=" background: orange">
+            
 
             <select style="width: 100%; border: 0; background: #f35525; height: 40px; color: white" id="select1" onchange="getOption()">
               <option value="0">Pilihan</option>
@@ -175,225 +384,6 @@
           </button>
 
         </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="featured section" id="tentang">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="left-image">
-            <img src="assets/images/featured.jpg" alt="">
-            <a href="property-details.html"><img src="assets/images/featured-icon.png" alt="" style="max-width: 60px; padding: 0px;"></a>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="section-heading">
-            <h6>Sekilas Tentang</h6>
-            <h2>Wisata Curug Naga</h2>
-          </div>
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Apa Itu Wisata Curug Naga?
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  Selamat datang di situs resmi Wisata Curug Naga. Wisata Curug Naga merupakan tempat wisata alam yang berada di daerah Megamendung, Puncak - Bogor yang dikelola oleh Perhutani KBM dan warga setempat. Di Wisata Curug Naga terdapat 3 curug, yaitu Curug Priuk, Curug Naga, dan Curug Barong. Setiap Curug memiliki ciri khas, karakter, dan tingkat kesulitan masing-masing untuk dijelajahi, sangat cocok bagi anda yang sangat menyukai tantangan.</div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Apa Saja yang didapat pengunjung?
-                </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  Di Wisata Curug Naga pengunjung akan melakukan aktifitas body rafting, river trekking, jungle trekking, cliff jumping.Untuk menuju curug, pengunjung harus melakukan river trekking/body rafting terlebih dahulu, memakai pelampung serta dipandu oleh pemandu Wisata Curug Naga.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Bagaimana Cara Reservasi atau Membeli Tiket?
-                </button>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  Bagi pengunjung yang ingin mengunjungi Wisata Curug Naga, wajib melakukan reservasi/booking terlebih dahulu atau melakukan pembelian tiket di wonderfulmega.com, karena untuk persiapan peralatan dan logistik di lapangan.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="info-table">
-            <ul>
-              <li>
-                <img src="assets/images/info-icon-01.png" alt="" style="max-width: 52px;">
-                <h4>Parkiran Luas<br><span>Akses Bus</span></h4>
-              </li>
-              <li>
-                <img src="assets/images/info-icon-04.png" alt="" style="max-width: 52px;">
-                <h4>Safety<br><span>Keselamatan nomor 1</span></h4>
-              </li>
-              <li>
-                <img src="assets/images/info-icon-03.png" alt="" style="max-width: 52px;">
-                <h4>Tiket <br><span>Online Sistem</span></h4>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="video section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 offset-lg-4">
-          <div class="section-heading text-center">
-            <h6>| Lihat Video</h6>
-            <h2>Mari Berjelajah </h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="video-content">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10 offset-lg-1">
-          <div class="video-frame">
-            <img src="assets/images/video-frame.jpg" alt="">
-            <a href="https://youtube.com" target="_blank"><i class="fa fa-play"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="fun-facts">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="wrapper">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="1" data-speed="1000"></h2>
-                  <p class="count-text ">Body Rafting</p>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="2" data-speed="1000"></h2>
-                  <p class="count-text ">Camping</p>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="3" data-speed="1000"></h2>
-                  <p class="count-text ">Explor</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section best-deal">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="section-heading">
-            <h6>| Wisata Viral</h6>
-            <h2>Gallery Kami</h2>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="tabs-content">
-            <div class="row">
-              <div class="nav-wrapper ">
-                <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="appartment-tab" data-bs-toggle="tab" data-bs-target="#appartment" type="button" role="tab" aria-controls="appartment" aria-selected="true">Appartment</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="villa-tab" data-bs-toggle="tab" data-bs-target="#villa" type="button" role="tab" aria-controls="villa" aria-selected="false">Villa House</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="penthouse-tab" data-bs-toggle="tab" data-bs-target="#penthouse" type="button" role="tab" aria-controls="penthouse" aria-selected="false">Penthouse</button>
-                  </li>
-                </ul>
-              </div>
-              <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="appartment" role="tabpanel" aria-labelledby="appartment-tab">
-                  <div class="row">
-                    <div class="col-lg-3">
-
-                    </div>
-                    <div class="col-lg-6">
-                      <img src="assets/images/deal-01.jpg" alt="">
-                    </div>
-                    <div class="col-lg-3">
-                      <h4>Extra Info About Property</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse.
-                        <br><br>When you need free CSS templates, you can simply type TemplateMo in any search engine website. In addition, you can type TemplateMo Portfolio, TemplateMo One Page Layouts, etc.
-                      </p>
-                      <div class="icon-button">
-                        <a href="property-details.html"><i class="fa fa-calendar"></i> Beli TIket</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="villa" role="tabpanel" aria-labelledby="villa-tab">
-                  <div class="row">
-                    <div class="col-lg-3">
-
-                    </div>
-                    <div class="col-lg-6">
-                      <img src="assets/images/deal-02.jpg" alt="">
-                    </div>
-                    <div class="col-lg-3">
-                      <h4>Detail Info About Villa</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
-                      <div class="icon-button">
-                        <a href="property-details.html"><i class="fa fa-calendar"></i> Beli TIket</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="penthouse" role="tabpanel" aria-labelledby="penthouse-tab">
-                  <div class="row">
-                    <div class="col-lg-3">
-
-                    </div>
-                    <div class="col-lg-6">
-                      <img src="assets/images/deal-03.jpg" alt="">
-                    </div>
-                    <div class="col-lg-3">
-                      <h4>Extra Info About Penthouse</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
-                      <div class="icon-button">
-                        <a href="property-details.html"><i class="fa fa-calendar"></i> Beli TIket</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

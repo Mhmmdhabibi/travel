@@ -875,9 +875,19 @@ padding: 71px 10px;
 }
 
 .main-banner .item-1 {
+  position: relative;
   background-image: url(../images/banner-01.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 600px; /* Tinggi default untuk layar desktop */
 }
 
+/* Media query untuk layar seluler */
+@media (max-width: 1000px) {
+  .main-banner .item-1 {
+    height: 200px; /* Sesuaikan tinggi untuk layar seluler */
+  }
+}
 .main-banner .item-2 {
   background-image: url(../images/banner-02.jpg);
 }
