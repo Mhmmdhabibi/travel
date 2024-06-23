@@ -36,6 +36,8 @@ class TransaksiResource extends Resource
                     ->numeric(),
                 Forms\Components\DatePicker::make('tanggal_pembayaran')
                     ->required(),
+                    Forms\Components\TextInput::make('informasi_tambahan')
+                    ->required(),
                 Forms\Components\FileUpload::make('bukti_transfer_path')
                     ->disk('local')
                     ->image()
@@ -80,6 +82,8 @@ class TransaksiResource extends Resource
                 Tables\Columns\TextColumn::make('no_telp')
                     ->label('Nomor Telephone')
                     ->sortable(),
+                    Tables\Columns\TextColumn::make('informasi_tambahan')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('tanggal_pembayaran')
                     ->date()
                     ->sortable(),
@@ -105,7 +109,7 @@ class TransaksiResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
-                    ->sortable()
+                    ->sortable()    
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

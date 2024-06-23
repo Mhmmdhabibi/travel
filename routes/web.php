@@ -161,6 +161,7 @@ Route::post('/transaksi/store', function(Request $request){
         'no_telp' => $request->nomor_hp,
         'tanggal_masuk' => $tanggal_masuk,
         'tanggal_keluar' => $tanggal_keluar,
+        'informasi_tambahan' => $request->comment
     ]);
     Notification::make()
     ->title('Order Baru')

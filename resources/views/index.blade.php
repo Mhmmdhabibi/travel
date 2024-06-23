@@ -19,9 +19,9 @@
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
-   </head>
+</head>
 
 <body>
 
@@ -123,7 +123,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        
+
         <form class="form-data" method="post" action="/transaksi/store">
           @csrf
           <div style=" background: orange">
@@ -161,7 +161,7 @@
             @endforeach -->
           </select>
           <label class="label-form">Informasi Tambahan</label>
-          <textarea class="koment" rows="4" cols="50" name="comment" form="usrform" placeholder="Permintaan Khusus ( Misalnya, makanan khusus, akomodasi, dll)"></textarea>
+          <textarea class="koment" rows="4" cols="50" name="comment" placeholder="Permintaan Khusus ( Misalnya, makanan khusus, akomodasi, dll)"></textarea>
           <button type="submit" style="
         background-color: black; 
         color: white; 
@@ -465,7 +465,7 @@
               const harga = stripHtmlTags(item.harga);
 
               option.value = item.id;
-              option.innerHTML = `${title}\n${detail}\n   Rp ${harga}`;// Format the option text
+              option.innerHTML = `${title}\n${detail}\n   Rp ${harga}`; // Format the option text
               paket.appendChild(option);
             })
           })

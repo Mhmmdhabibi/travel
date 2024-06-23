@@ -122,7 +122,7 @@ https://templatemo.com/tm-591-villa-agency
                           <li style="color: red;">Pembayaran Tidak Valid</li><br>
                           @endif
                           @if($data->status == 'pending')
-                          <a href="/property-detail/{{$data->paket_wisata_id}}/{{$data->id}}">Selesaikan Pembayaran</a>
+                          <a href="/property-detail/{{$data->paket_wisata_id}}/{{$data->id}}">Selesaikan Pembayaran / Tunggu Konfirmasi Admin</a>
                           @endif
                           
                         </ul>
