@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('paket_wisatas', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['wisata', 'camping']);
+            $table->enum('type', ['wisata', 'camping'])->default('wisata');
             $table->text('title');
             $table->text('gambar');
             $table->bigInteger('harga');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('percentage');
             $table->text('detail');
             $table->char('norek', 20);
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
         });
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();

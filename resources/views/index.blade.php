@@ -66,8 +66,8 @@
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <h1>Wonderful.Mega</h1>
+            <a href="index.html" class="logo" style="white-space: nowrap">
+              <h1>Wonderful Mega</h1>
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
